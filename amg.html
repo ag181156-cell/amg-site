@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrés Gutiérrez</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --text: #1A1A18;
+      --muted: #6B6B66;
+      --subtle: #B0AFA8;
+      --border: #E0DED7;
+      --accent: #1A1A18;
+      --max: 680px;
+    }
+
+    body[data-theme="dark"] {
+      --bg: #111110;
+      --text: #F0EDE6;
+      --muted: #9A9990;
+      --subtle: #5A5A55;
+      --border: #2A2A27;
+      --accent: #F0EDE6;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lexend Deca', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.6; }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* NAV */
+    nav {
+      padding: 2.5rem 0 0;
+      margin-bottom: 5rem;
+    }
+
+    nav .inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .nav-name {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      opacity: 1;
+    }
+
+    .nav-name-block { display: flex; flex-direction: column; gap: 1px; }
+    .nav-name-big { font-size: 16px; font-weight: 600; letter-spacing: 0.04em; color: var(--text); }
+    .nav-name-small { font-size: 11px; font-weight: 300; color: var(--subtle); letter-spacing: 0.02em; }
+
+    .icon-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 4px 8px;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-btn:hover { color: var(--text); border-color: var(--text); }
+      font-family: 'Lexend Deca', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--subtle);
+      border: 1px solid var(--border);
+      background: none;
+      padding: 3px 9px;
+      border-radius: 2px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover { color: var(--text); border-color: var(--text); }
+
+    /* HERO */
+    .hero {
+      margin-bottom: 5rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s ease forwards;
+      animation-delay: 0.1s;
+    }
+
+    .hero h1 {
+      font-size: clamp(22px, 3.5vw, 28px);
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      max-width: 560px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.75;
+    }
+
+    /* DIVIDER */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 3.5rem;
+    }
+
+    /* SECTION */
+    section {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.25s; }
+    section:nth-child(2) { animation-delay: 0.35s; }
+    section:nth-child(3) { animation-delay: 0.45s; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ENTRIES */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 1.5rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .entry-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 3px;
+      letter-spacing: 0.01em;
+    }
+
+    .entry-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .entry-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .entry-year {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--subtle);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--text);
+      padding: 2px 7px;
+      border-radius: 2px;
+      margin-left: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 0 3.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+      animation-delay: 0.55s;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); opacity: 1; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--subtle);
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* LANG SWITCH */
+    [data-lang="es"] .en { display: none; }
+    [data-lang="en"] .es { display: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 520px) {
+      nav .inner { flex-direction: column; gap: 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      .entry { grid-template-columns: 1fr; }
+      .entry-year { margin-top: 4px; }
+      footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body data-lang="en" data-theme="light">
+<div class="wrap">
+
+  <nav>
+    <div class="inner">
+      <a class="nav-name" href="#">
+        <div class="nav-name-block">
+          <span class="nav-name-big">AMG</span>
+          <span class="nav-name-small">Andrés Miguel Gutiérrez Reinoso</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><button class="lang-btn" onclick="toggleLang(this)">ES</button></li>
+        <li><button class="lang-btn" onclick="toggleTheme(this)">Dark</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero" id="about">
+    <h1 class="en">One day, I will build something extraordinary in Venezuela.</h1>
+    <h1 class="es">Un día, construiré algo extraordinario en Venezuela.</h1>
+    <p class="en">
+      My vision is to become one of Venezuela's most impactful entrepreneurs — not just through personal success, but by creating ventures of significant scale that redefine what's possible in the region. Every company I build today is a step toward that.
+    </p>
+    <p class="es">
+      Mi visión es convertirme en uno de los emprendedores más influyentes de Venezuela — no solo a través del éxito personal, sino creando empresas de escala significativa que redefinan lo posible en la región. Cada empresa que construyo hoy es un paso hacia eso.
+    </p>
+  </div>
+
+  <hr />
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label">Projects</p>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">
+          Rush Studio <span class="tag">Active</span>
+        </div>
+        <div class="entry-sub en">Co-founder · rushstudio.es</div>
+        <div class="entry-sub es">Co-fundador · rushstudio.es</div>
+        <div class="entry-desc en">AI and automation agency built for Latin American businesses. Web development, intelligent dashboards, process automation, and AI chatbots. Co-founded with my brother Armando.</div>
+        <div class="entry-desc es">Agencia de IA y automatización para negocios latinoamericanos. Desarrollo web, dashboards inteligentes, automatización de procesos y chatbots. Co-fundada con mi hermano Armando.</div>
+      </div>
+      <div class="entry-year">2025–</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Glitched Emails</div>
+        <div class="entry-sub en">Co-founder · Miami</div>
+        <div class="entry-sub es">Co-fundador · Miami</div>
+        <div class="entry-desc en">Automated email deliverability optimization service. Built a scalable AWS infrastructure managing 400+ accounts weekly. Grew to 300+ active users with a fully automated revenue cycle.</div>
+        <div class="entry-desc es">Servicio de optimización de deliverability de email. Infraestructura AWS con 400+ cuentas semanales y 300+ usuarios activos con ciclo de ingresos completamente automatizado.</div>
+      </div>
+      <div class="entry-year">2022–2023</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Polar Proxies</div>
+        <div class="entry-sub en">Founder & COO · Miami</div>
+        <div class="entry-sub es">Fundador & COO · Miami</div>
+        <div class="entry-desc en">Digital infrastructure company specializing in IP proxy services. Scaled to six-figure revenue potential in three months. Built a community of 600+ active members and a fully automated payment system.</div>
+        <div class="entry-desc es">Empresa de infraestructura digital en servicios de proxies IP. Escalado a potencial de ingresos de seis cifras en tres meses. Comunidad de 600+ miembros activos con sistema de pagos completamente automatizado.</div>
+      </div>
+      <div class="entry-year">2021–2022</div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Rush Studio</div>
+        <div class="entry-sub en">Co-founder · Madrid</div>
+        <div class="entry-sub es">Co-fundador · Madrid</div>
+      </div>
+      <div class="entry-year">2025–</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">QuantumReach Growth Agency</div>
+        <div class="entry-sub en">Strategy & Growth Analyst</div>
+        <div class="entry-sub es">Analista de Estrategia y Crecimiento</div>
+      </div>
+      <div class="entry-year">2024</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">RG Group</div>
+        <div class="entry-sub en">Strategy · Venezuela</div>
+        <div class="entry-sub es">Estrategia · Venezuela</div>
+      </div>
+      <div class="entry-year">2023</div>
+    </div>
+
+    <div class="entry">
+      <div>
+        <div class="entry-title">Universidad Francisco de Vitoria</div>
+        <div class="entry-sub en">Marketing & Digital Transformation · Madrid</div>
+        <div class="entry-sub es">Marketing y Transformación Digital · Madrid</div>
+        <div class="entry-desc en">Previously completed first year of Business Administration (ADE) at UFV, 2022–2023.</div>
+        <div class="entry-desc es">Anteriormente completé el primer año de ADE en la UFV, 2022–2023.</div>
+      </div>
+      <div class="entry-year">2023–2027</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/amgr1811/" target="_blank">LinkedIn</a>
+      <a href="https://rushstudio.es" target="_blank">Rush Studio</a>
+      <a href="mailto:andres@rushstudio.es">Email</a>
+    </div>
+    <div class="footer-copy">© 2026</div>
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme(btn) {
+    const body = document.body;
+    const isDark = body.dataset.theme === 'dark';
+    body.dataset.theme = isDark ? 'light' : 'dark';
+    btn.textContent = isDark ? 'Dark' : 'Light';
+  }
+
+  function toggleLang(btn) {
+    const body = document.body;
+    if (body.dataset.lang === 'en') {
+      body.dataset.lang = 'es';
+      btn.textContent = 'EN';
+    } else {
+      body.dataset.lang = 'en';
+      btn.textContent = 'ES';
+    }
+  }
+</script>
+</body>
+</html>
