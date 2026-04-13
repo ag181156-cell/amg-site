@@ -6,7 +6,7 @@
   <title>AMG — Andrés Miguel Gutiérrez Reinoso</title>
   <link rel="icon" type="image/png" href="faviconamg.png" />
   <link rel="shortcut icon" href="faviconamg.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,19 +19,11 @@
       color: #F0EDE6;
       transition: background 0.3s, color 0.3s;
     }
-
-    body.light {
-      background: #F7F5F0;
-      color: #1A1A18;
-    }
+    body.light { background: #F7F5F0; color: #1A1A18; }
 
     a { color: inherit; text-decoration: none; }
 
-    .wrap {
-      max-width: 660px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .wrap { max-width: 660px; margin: 0 auto; padding: 0 2rem; }
 
     /* NAV */
     nav {
@@ -41,195 +33,143 @@
       justify-content: space-between;
       align-items: flex-start;
     }
-
     .nav-name { display: flex; flex-direction: column; gap: 2px; }
-
-    .nav-name-big {
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: #F0EDE6;
-      transition: color 0.3s;
-    }
+    .nav-name-big { font-size: 16px; font-weight: 600; letter-spacing: 0.06em; color: #F0EDE6; transition: color 0.3s; }
     body.light .nav-name-big { color: #1A1A18; }
-
-    .nav-name-small {
-      font-size: 11px;
-      font-weight: 300;
-      color: #5A5A55;
-      letter-spacing: 0.02em;
-    }
+    .nav-name-small { font-size: 11px; font-weight: 300; color: #5A5A55; letter-spacing: 0.02em; }
     body.light .nav-name-small { color: #B0AFA8; }
 
     .nav-btns { display: flex; gap: 0.75rem; align-items: center; }
-
     .btn {
       font-family: 'Lexend Deca', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      background: none;
-      border: 1px solid #2A2A27;
-      color: #9A9990;
-      padding: 4px 10px;
-      border-radius: 2px;
-      cursor: pointer;
-      transition: all 0.2s;
+      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
+      background: none; border: 1px solid #2A2A27; color: #9A9990;
+      padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
     }
     body.light .btn { border-color: #E0DED7; color: #6B6B66; }
     .btn:hover { color: #F0EDE6; border-color: #F0EDE6; }
     body.light .btn:hover { color: #1A1A18; border-color: #1A1A18; }
 
     /* HERO */
-    .hero {
-      margin-bottom: 4rem;
-    }
-
+    .hero { margin-bottom: 4rem; }
     .hero h1 {
-      font-size: clamp(20px, 3vw, 26px);
-      font-weight: 400;
-      line-height: 1.35;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.25rem;
-      color: #F0EDE6;
-      transition: color 0.3s;
+      font-size: clamp(20px, 3vw, 26px); font-weight: 400;
+      line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 1.25rem;
+      color: #F0EDE6; transition: color 0.3s;
     }
     body.light .hero h1 { color: #1A1A18; }
-
-    .hero p {
-      font-size: 14px;
-      font-weight: 300;
-      color: #9A9990;
-      max-width: 500px;
-      line-height: 1.75;
-    }
+    .hero p { font-size: 14px; font-weight: 300; color: #9A9990; max-width: 500px; line-height: 1.75; }
     body.light .hero p { color: #6B6B66; }
 
-    /* ORB */
-    .orb {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    body.light .orb { opacity: 0.18; }
-    body.light .orb .stars { stroke: #1A1A18; }
-
     /* DIVIDER */
-    hr {
-      border: none;
-      border-top: 1px solid #2A2A27;
-      margin-bottom: 3.5rem;
-    }
+    hr { border: none; border-top: 1px solid #2A2A27; margin-bottom: 3.5rem; }
     body.light hr { border-color: #E0DED7; }
 
     /* SECTIONS */
     section { margin-bottom: 3.5rem; }
-
     .section-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #5A5A55;
-      margin-bottom: 1.75rem;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #5A5A55; margin-bottom: 1.75rem;
     }
     body.light .section-label { color: #B0AFA8; }
 
     /* ENTRIES */
     .entry {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0 1.5rem;
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #2A2A27;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 0 1.5rem; padding-bottom: 1.5rem; margin-bottom: 1.5rem;
+      border-bottom: 1px solid #2A2A27; align-items: start;
     }
     body.light .entry { border-color: #E0DED7; }
     .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
     .entry-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: #F0EDE6;
-      margin-bottom: 3px;
-      letter-spacing: 0.01em;
-      transition: color 0.3s;
+      font-size: 14px; font-weight: 500; color: #F0EDE6;
+      margin-bottom: 3px; letter-spacing: 0.01em; transition: color 0.3s;
     }
     body.light .entry-title { color: #1A1A18; }
-
-    .entry-sub {
-      font-size: 13px;
-      font-weight: 300;
-      color: #9A9990;
-      margin-bottom: 5px;
-    }
+    .entry-sub { font-size: 13px; font-weight: 300; color: #9A9990; margin-bottom: 5px; }
     body.light .entry-sub { color: #6B6B66; }
-
-    .entry-desc {
-      font-size: 13px;
-      font-weight: 300;
-      color: #5A5A55;
-      line-height: 1.65;
-    }
+    .entry-desc { font-size: 13px; font-weight: 300; color: #5A5A55; line-height: 1.65; }
     body.light .entry-desc { color: #888780; }
-
-    .entry-year {
-      font-size: 12px;
-      font-weight: 300;
-      color: #5A5A55;
-      white-space: nowrap;
-      padding-top: 2px;
-    }
+    .entry-year { font-size: 12px; font-weight: 300; color: #5A5A55; white-space: nowrap; padding-top: 2px; }
     body.light .entry-year { color: #B0AFA8; }
 
     .tag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #111110;
-      background: #F0EDE6;
-      padding: 2px 7px;
-      border-radius: 2px;
-      margin-left: 8px;
-      vertical-align: middle;
-      position: relative;
-      top: -1px;
+      display: inline-block; font-size: 10px; font-weight: 400;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: #111110; background: #F0EDE6;
+      padding: 2px 7px; border-radius: 2px; margin-left: 8px;
+      vertical-align: middle; position: relative; top: -1px;
     }
     body.light .tag { background: #1A1A18; color: #F7F5F0; }
 
+    /* CLICKABLE ENTRY */
+    .entry-clickable { cursor: pointer; }
+    .entry-clickable .entry-title { text-decoration: underline; text-decoration-color: #3A3A37; text-underline-offset: 3px; }
+    body.light .entry-clickable .entry-title { text-decoration-color: #C0BEB8; }
+    .entry-clickable:hover .entry-title { text-decoration-color: #F0EDE6; }
+    body.light .entry-clickable:hover .entry-title { text-decoration-color: #1A1A18; }
+
+    /* POPUP */
+    .overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 100;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .overlay.open { display: flex; }
+    body.light .overlay { background: rgba(0,0,0,0.35); }
+
+    .popup {
+      background: #1A1A18; border: 1px solid #2A2A27;
+      border-radius: 4px; max-width: 560px; width: 100%;
+      padding: 2rem 2.25rem; position: relative;
+      max-height: 80vh; overflow-y: auto;
+    }
+    body.light .popup { background: #FFFFFF; border-color: #E0DED7; }
+
+    .popup-close {
+      position: absolute; top: 1.25rem; right: 1.25rem;
+      background: none; border: none; cursor: pointer;
+      color: #5A5A55; font-size: 18px; line-height: 1;
+      font-family: 'Lexend Deca', sans-serif;
+    }
+    .popup-close:hover { color: #F0EDE6; }
+    body.light .popup-close:hover { color: #1A1A18; }
+
+    .popup-title {
+      font-size: 15px; font-weight: 500; color: #F0EDE6;
+      margin-bottom: 0.3rem; transition: color 0.3s;
+    }
+    body.light .popup-title { color: #1A1A18; }
+    .popup-meta { font-size: 12px; color: #5A5A55; margin-bottom: 1.5rem; }
+    body.light .popup-meta { color: #B0AFA8; }
+
+    .popup-body p {
+      font-size: 13px; font-weight: 300; color: #9A9990;
+      line-height: 1.75; margin-bottom: 1rem;
+    }
+    body.light .popup-body p { color: #6B6B66; }
+    .popup-body p:last-child { margin-bottom: 0; }
+
+    .popup-stat {
+      display: inline-block; font-size: 11px; font-weight: 400;
+      color: #F0EDE6; border: 1px solid #2A2A27;
+      padding: 3px 9px; border-radius: 2px; margin: 0 6px 6px 0;
+    }
+    body.light .popup-stat { color: #1A1A18; border-color: #E0DED7; }
+
     /* FOOTER */
     footer {
-      padding: 2.5rem 0 3.5rem;
-      border-top: 1px solid #2A2A27;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 2.5rem 0 3.5rem; border-top: 1px solid #2A2A27;
+      display: flex; justify-content: space-between; align-items: center;
     }
     body.light footer { border-color: #E0DED7; }
-
     .footer-links { display: flex; gap: 1.75rem; }
-
-    .footer-links a {
-      font-size: 13px;
-      font-weight: 300;
-      color: #9A9990;
-      transition: color 0.2s;
-    }
+    .footer-links a { font-size: 13px; font-weight: 300; color: #9A9990; transition: color 0.2s; }
     body.light .footer-links a { color: #6B6B66; }
     .footer-links a:hover { color: #F0EDE6; }
     body.light .footer-links a:hover { color: #1A1A18; }
-
     .footer-copy { font-size: 12px; color: #5A5A55; }
     body.light .footer-copy { color: #B0AFA8; }
 
@@ -237,7 +177,6 @@
     [data-lang="es"] .en { display: none; }
     [data-lang="en"] .es { display: none; }
 
-    /* RESPONSIVE */
     @media (max-width: 520px) {
       nav { flex-direction: column; gap: 1.25rem; }
       .entry { grid-template-columns: 1fr; }
@@ -246,33 +185,81 @@
   </style>
 </head>
 <body data-lang="en">
-<div class="orb">
-  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-    <defs>
-      <radialGradient id="orbGrad" cx="38%" cy="35%" r="65%">
-        <stop offset="0%" stop-color="#5bc8f5"/>
-        <stop offset="35%" stop-color="#2aaf96"/>
-        <stop offset="60%" stop-color="#0e7a6e"/>
-        <stop offset="90%" stop-color="#03312b"/>
-        <stop offset="100%" stop-color="#000"/>
-      </radialGradient>
-    </defs>
-    <circle cx="100" cy="100" r="100" fill="url(#orbGrad)"/>
-    <g class="stars" fill="none" stroke="white" stroke-width="0.5" opacity="0.85">
-      <!-- Star 1 --><polygon points="65.56,94.44 66.62,97.48 69.84,97.55 67.27,99.50 68.21,102.58 65.56,100.74 62.92,102.58 63.85,99.50 61.28,97.55 64.50,97.48"/>
-      <!-- Star 2 --><polygon points="73.92,82.86 74.98,85.90 78.20,85.97 75.63,87.92 76.57,91.00 73.92,89.16 71.28,91.00 72.21,87.92 69.64,85.97 72.86,85.90"/>
-      <!-- Star 3 --><polygon points="85.97,75.18 87.03,78.23 90.25,78.29 87.68,80.24 88.62,83.33 85.97,81.48 83.33,83.33 84.26,80.24 81.69,78.29 84.91,78.23"/>
-      <!-- Star 4 --><polygon points="100.00,72.50 101.06,75.54 104.28,75.61 101.71,77.56 102.65,80.64 100.00,78.80 97.35,80.64 98.29,77.56 95.72,75.61 98.94,75.54"/>
-      <!-- Star 5 --><polygon points="114.03,75.18 115.09,78.23 118.31,78.29 115.74,80.24 116.67,83.33 114.03,81.48 111.38,83.33 112.32,80.24 109.75,78.29 112.97,78.23"/>
-      <!-- Star 6 --><polygon points="126.08,82.86 127.14,85.90 130.36,85.97 127.79,87.92 128.72,91.00 126.08,89.16 123.43,91.00 124.37,87.92 121.80,85.97 125.02,85.90"/>
-      <!-- Star 7 --><polygon points="134.44,94.44 135.50,97.48 138.72,97.55 136.15,99.50 137.08,102.58 134.44,100.74 131.79,102.58 132.73,99.50 130.16,97.55 133.38,97.48"/>
-    </g>
-  </svg>
+
+<!-- POPUPS -->
+<div class="overlay" id="popup-rush" onclick="closePopup(event, 'popup-rush')">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopupBtn('popup-rush')">✕</button>
+    <div class="popup-title">Rush Studio</div>
+    <div class="popup-meta en">Co-founder · 2025–present · Caracas</div>
+    <div class="popup-meta es">Co-fundador · 2025–presente · Caracas</div>
+    <div style="margin-bottom:1.25rem;">
+      <span class="popup-stat en">AI & Automation</span>
+      <span class="popup-stat en">Web Development</span>
+      <span class="popup-stat en">Chatbots</span>
+      <span class="popup-stat es">IA & Automatización</span>
+      <span class="popup-stat es">Desarrollo Web</span>
+      <span class="popup-stat es">Chatbots</span>
+    </div>
+    <div class="popup-body">
+      <p class="en">Co-founded Rush Studio with my brother Armando (CTO) and Steven Corredor (CMO) — an AI and automation agency targeting Latin American businesses. We offer web development, intelligent dashboards, process automation, and AI chatbots.</p>
+      <p class="en">Our go-to-market focused on Venezuelan SMBs, using a low-ticket digital product funnel to build pipeline. We developed our own lead-gen chatbot persona and built out a full content strategy for Instagram Reels targeting restaurants, retail, and medical businesses.</p>
+      <p class="en">We work with both low and high ticket companies across Latin America. But beyond the business — Rush Studio was built with a deeper purpose. Venezuela lost 25 years to circumstances beyond its people's control. We believe technology and automation can give small businesses the tools they were never given access to. Every client we help is one more step toward a country that works again.</p>
+      <p class="es">Co-fundé Rush Studio con mi hermano Armando (CTO) y Steven Corredor (CMO) — una agencia de IA y automatización enfocada en negocios latinoamericanos. Ofrecemos desarrollo web, dashboards inteligentes, automatización de procesos y chatbots.</p>
+      <p class="es">Nuestro go-to-market se enfocó en PyMEs venezolanas, usando un funnel de producto digital de bajo ticket para construir pipeline. Desarrollamos nuestro propio chatbot de lead-gen y una estrategia de contenido completa para Instagram Reels.</p>
+      <p class="es">Trabajamos con empresas de bajo y alto ticket en toda Latinoamérica. Pero más allá del negocio — Rush Studio nació con un propósito más profundo. Venezuela perdió 25 años que su gente nunca pidió perder. Creemos que la tecnología y la automatización pueden darle a los pequeños negocios las herramientas que nunca tuvieron acceso. Cada cliente que ayudamos es un paso más hacia un país que vuelve a funcionar.</p>
+    </div>
+  </div>
 </div>
+
+<div class="overlay" id="popup-glitched" onclick="closePopup(event, 'popup-glitched')">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopupBtn('popup-glitched')">✕</button>
+    <div class="popup-title">Glitched Emails</div>
+    <div class="popup-meta en">Co-founder · Feb 2022 – Jan 2023 · Miami</div>
+    <div class="popup-meta es">Co-fundador · Feb 2022 – Ene 2023 · Miami</div>
+    <div style="margin-bottom:1.25rem;">
+      <span class="popup-stat">300+ users</span>
+      <span class="popup-stat">400+ accounts/week</span>
+      <span class="popup-stat">AWS</span>
+    </div>
+    <div class="popup-body">
+      <p class="en">Founded and operated an automated email deliverability optimization service, helping clients improve their sender reputation scores to gain priority access to high-demand digital platforms and product waitlists.</p>
+      <p class="en">Engineered a scalable backend infrastructure using AWS cloud servers to simulate organic email activity across 400+ accounts weekly, significantly improving Google deliverability scores. Designed and launched a self-service web platform enabling clients to autonomously purchase, manage, and monitor their services in real time.</p>
+      <p class="en">Built a client base of 300+ active users with a fully automated revenue cycle — from onboarding and service delivery to weekly recurring invoicing — creating a low-touch, high-margin business model.</p>
+      <p class="es">Fundé y operé un servicio automatizado de optimización de deliverability de email, ayudando a clientes a mejorar su reputación como remitentes para acceder con prioridad a plataformas digitales de alta demanda.</p>
+      <p class="es">Construí una infraestructura backend escalable en AWS para simular actividad orgánica de email en 400+ cuentas semanales, mejorando significativamente los scores de deliverability de Google. Lancé una plataforma web de autoservicio para que los clientes gestionaran sus servicios en tiempo real.</p>
+      <p class="es">Construí una base de 300+ usuarios activos con un ciclo de ingresos completamente automatizado — desde el onboarding hasta la facturación recurrente semanal.</p>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="popup-polar" onclick="closePopup(event, 'popup-polar')">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopupBtn('popup-polar')">✕</button>
+    <div class="popup-title">Polar Proxies</div>
+    <div class="popup-meta en">Founder & COO · Feb 2021 – Jan 2022 · Miami</div>
+    <div class="popup-meta es">Fundador & COO · Feb 2021 – Ene 2022 · Miami</div>
+    <div style="margin-bottom:1.25rem;">
+      <span class="popup-stat">600+ members</span>
+      <span class="popup-stat en">6-figure potential</span>
+      <span class="popup-stat es">6 cifras</span>
+    </div>
+    <div class="popup-body">
+      <p class="en">Founded and scaled a digital infrastructure company specializing in IP proxy services for enterprise and individual clients. Built the business from zero to six-figure revenue potential within the first three months of operations.</p>
+      <p class="en">Managed the complete P&L cycle including pricing strategy, cost structure optimization, and revenue forecasting. Developed and deployed a fully automated sales infrastructure through a custom-built API-integrated payment system, enabling 24/7 autonomous transaction processing with zero manual intervention.</p>
+      <p class="en">Built and managed a high-engagement client community of 600+ active members generating daily recurring revenue. Led all growth and acquisition strategy, establishing a strong digital presence on Twitter (X) that became the primary client acquisition channel.</p>
+      <p class="es">Fundé y escalé una empresa de infraestructura digital especializada en servicios de proxies IP. Construí el negocio de cero a potencial de ingresos de seis cifras en los primeros tres meses.</p>
+      <p class="es">Gestioné el ciclo completo de P&L incluyendo estrategia de precios, optimización de estructura de costos y proyecciones de ingresos. Desarrollé y desplegué una infraestructura de ventas completamente automatizada con un sistema de pagos integrado por API, permitiendo procesamiento autónomo 24/7.</p>
+      <p class="es">Construí y gestioné una comunidad de 600+ miembros activos generando ingresos recurrentes diarios. Lideré toda la estrategia de crecimiento y adquisición, estableciendo una presencia digital fuerte en Twitter (X) como canal principal de adquisición.</p>
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <nav>
-    <a href="#" style="text-decoration:none; display:flex; align-items:center; gap:12px;">
+    <a href="#" style="text-decoration:none;">
       <div class="nav-name">
         <span class="nav-name-big">AMG</span>
         <span class="nav-name-small">Andrés Miguel Gutiérrez Reinoso</span>
@@ -285,10 +272,10 @@
   </nav>
 
   <div class="hero" id="about">
-    <h1 class="en">One day, I will build something extraordinary in Venezuela.</h1>
-    <h1 class="es">Un día, construiré algo extraordinario en Venezuela.</h1>
-    <p class="en">My vision is to become one of Venezuela's most impactful entrepreneurs — not just through personal success, but by creating ventures of significant scale that redefine what's possible in the region. Every company I build today is a step toward that.</p>
-    <p class="es">Mi visión es convertirme en uno de los emprendedores más influyentes de Venezuela — no solo a través del éxito personal, sino creando empresas de escala significativa que redefinan lo posible en la región. Cada empresa que construyo hoy es un paso hacia eso.</p>
+    <h1 class="en">Entrepreneur at 14. Still at it.</h1>
+    <h1 class="es">Emprendedor a los 14. Sigo en ello.</h1>
+    <p class="en">I build companies — and I'm just getting started. Over the next 10 to 15 years, I'm working toward something bigger than any single business: helping rebuild Venezuela. Not through politics, but through the kind of infrastructure, technology, and economic activity that gives people real opportunities. Every venture I build today is part of that plan.</p>
+    <p class="es">Construyo empresas — y apenas estoy comenzando. En los próximos 10 a 15 años, trabajo hacia algo más grande que cualquier negocio: ayudar a reconstruir Venezuela. No desde la política, sino desde la infraestructura, la tecnología y la actividad económica que le da a la gente oportunidades reales. Cada empresa que construyo hoy es parte de ese plan.</p>
   </div>
 
   <hr />
@@ -296,35 +283,35 @@
   <section id="projects">
     <p class="section-label">Projects</p>
 
-    <div class="entry">
+    <div class="entry entry-clickable" onclick="openPopup('popup-rush')">
       <div>
         <div class="entry-title">Rush Studio <span class="tag">Active</span></div>
         <div class="entry-sub en">Co-founder · rushstudio.es</div>
         <div class="entry-sub es">Co-fundador · rushstudio.es</div>
-        <div class="entry-desc en">AI and automation agency for Latin American businesses. Web development, intelligent dashboards, process automation, and AI chatbots. Co-founded with my brother Armando (CTO) and Steven Corredor (CMO).</div>
-        <div class="entry-desc es">Agencia de IA y automatización para negocios latinoamericanos. Desarrollo web, dashboards inteligentes, automatización de procesos y chatbots. Co-fundada con mi hermano Armando (CTO) y Steven Corredor (CMO).</div>
+        <div class="entry-desc en">AI and automation agency for Latin American businesses. Co-founded with Armando (CTO) and Steven Corredor (CMO).</div>
+        <div class="entry-desc es">Agencia de IA y automatización para negocios latinoamericanos. Co-fundada con Armando (CTO) y Steven Corredor (CMO).</div>
       </div>
       <div class="entry-year">2025–</div>
     </div>
 
-    <div class="entry">
+    <div class="entry entry-clickable" onclick="openPopup('popup-glitched')">
       <div>
         <div class="entry-title">Glitched Emails</div>
         <div class="entry-sub en">Co-founder · Miami</div>
         <div class="entry-sub es">Co-fundador · Miami</div>
-        <div class="entry-desc en">Email deliverability optimization service. Scalable AWS infrastructure managing 400+ accounts weekly. Grew to 300+ active users with a fully automated revenue cycle.</div>
-        <div class="entry-desc es">Servicio de optimización de deliverability de email. Infraestructura AWS con 400+ cuentas semanales. 300+ usuarios activos con ciclo de ingresos completamente automatizado.</div>
+        <div class="entry-desc en">Email deliverability optimization. 300+ active users, fully automated revenue cycle.</div>
+        <div class="entry-desc es">Optimización de deliverability de email. 300+ usuarios activos, ciclo de ingresos automatizado.</div>
       </div>
       <div class="entry-year">2022–2023</div>
     </div>
 
-    <div class="entry">
+    <div class="entry entry-clickable" onclick="openPopup('popup-polar')">
       <div>
         <div class="entry-title">Polar Proxies</div>
         <div class="entry-sub en">Founder & COO · Miami</div>
         <div class="entry-sub es">Fundador & COO · Miami</div>
-        <div class="entry-desc en">Digital infrastructure company in IP proxy services. Six-figure revenue potential in three months. 600+ active members and a fully automated payment system.</div>
-        <div class="entry-desc es">Empresa de infraestructura digital en proxies IP. Potencial de ingresos de seis cifras en tres meses. 600+ miembros activos y sistema de pagos completamente automatizado.</div>
+        <div class="entry-desc en">IP proxy services. Six-figure revenue potential in three months. 600+ active members.</div>
+        <div class="entry-desc es">Servicios de proxies IP. Potencial de seis cifras en tres meses. 600+ miembros activos.</div>
       </div>
       <div class="entry-year">2021–2022</div>
     </div>
@@ -376,7 +363,7 @@
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/amgr1811/" target="_blank">LinkedIn</a>
       <a href="https://rushstudio.es" target="_blank">Rush Studio</a>
-      <a href="/cdn-cgi/l/email-protection#2b4a4c1a131a1a1e1d6b4c464a424705484446">Email</a>
+      <a href="mailto:ag181156@gmail.com">Email</a>
     </div>
     <div class="footer-copy">© 2026</div>
   </footer>
@@ -384,6 +371,22 @@
 </div>
 
 <script>
+  function openPopup(id) {
+    document.getElementById(id).classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopupBtn(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closePopup(e, id) {
+    if (e.target === document.getElementById(id)) {
+      closePopupBtn(id);
+    }
+  }
+
   function toggleLang(btn) {
     const body = document.body;
     if (body.dataset.lang === 'en') {
