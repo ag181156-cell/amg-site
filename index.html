@@ -3,528 +3,723 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMG — Andrés Miguel Gutiérrez Reinoso</title>
+  <title>Andrés Gutiérrez</title>
   <link rel="icon" type="image/png" href="faviconamg.png" />
   <link rel="shortcut icon" href="faviconamg.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Lexend+Deca:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg: #0e0e0d;
+      --text: #F0EDE6;
+      --muted: #9A9990;
+      --dim: #4A4A46;
+      --border: #222220;
+      --serif: 'Hedvig Letters Serif', serif;
+      --sans: 'Lexend Deca', sans-serif;
+    }
+    body.light {
+      --bg: #F9F7F3;
+      --text: #1A1A18;
+      --muted: #6B6B66;
+      --dim: #C0BEB8;
+      --border: #E0DED7;
+    }
+
     body {
-      font-family: 'Lexend Deca', sans-serif;
+      font-family: var(--sans);
       font-weight: 300;
-      line-height: 1.75;
-      font-size: 17px;
+      font-size: 15px;
+      line-height: 1.7;
+      background: var(--bg);
+      color: var(--text);
       -webkit-font-smoothing: antialiased;
-      background: #111110;
-      color: #F0EDE6;
       transition: background 0.3s, color 0.3s;
     }
-    body.light { background: #F7F5F0; color: #1A1A18; }
 
     a { color: inherit; text-decoration: none; }
 
-    .wrap { max-width: 660px; margin: 0 auto; padding: 0 2rem; }
-
     /* NAV */
     nav {
-      padding: 2.5rem 0 0;
-      margin-bottom: 5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 2rem 4rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: var(--bg); z-index: 50;
     }
-    .nav-name { display: flex; flex-direction: column; gap: 2px; }
-    .nav-name-big { font-size: 16px; font-weight: 600; letter-spacing: 0.06em; color: #F0EDE6; transition: color 0.3s; font-family: 'Hedvig Letters Serif', serif; }
-    body.light .nav-name-big { color: #1A1A18; }
-    .nav-name-small { font-size: 11px; font-weight: 300; color: #5A5A55; letter-spacing: 0.02em; }
-    body.light .nav-name-small { color: #B0AFA8; }
-
-    .nav-btns { display: flex; gap: 0.75rem; align-items: center; }
-    .btn {
-      font-family: 'Lexend Deca', sans-serif;
-      font-size: 11px; font-weight: 400; letter-spacing: 0.04em;
-      background: none; border: 1px solid #2A2A27; color: #9A9990;
-      padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
+    .nav-left { display: flex; flex-direction: column; gap: 1px; }
+    .nav-name { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text); }
+    .nav-sub { font-size: 11px; color: var(--dim); }
+    .nav-right { display: flex; gap: 0.6rem; }
+    .nav-btn {
+      font-family: var(--sans); font-size: 11px; background: none;
+      border: 1px solid var(--border); color: var(--muted);
+      padding: 4px 12px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
     }
-    body.light .btn { border-color: #E0DED7; color: #6B6B66; }
-    .btn:hover { color: #F0EDE6; border-color: #F0EDE6; }
-    body.light .btn:hover { color: #1A1A18; border-color: #1A1A18; }
+    .nav-btn:hover { color: var(--text); border-color: var(--muted); }
 
-    /* HERO */
-    .hero { margin-bottom: 4rem; }
-    .hero h1 {
-      font-size: clamp(20px, 3vw, 26px); font-weight: 400;
-      font-family: 'Hedvig Letters Serif', serif;
-      line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 1.25rem;
-      color: #F0EDE6; transition: color 0.3s;
+    /* HERO - full width split */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90vh;
+      border-bottom: 1px solid var(--border);
     }
-    body.light .hero h1 { color: #1A1A18; }
-    .hero p { font-size: 15px; font-weight: 300; color: #9A9990; max-width: 500px; line-height: 1.75; }
-    body.light .hero p { color: #6B6B66; }
-
-    /* DIVIDER */
-    hr { border: none; border-top: 1px solid #2A2A27; margin-bottom: 3.5rem; }
-    body.light hr { border-color: #E0DED7; }
-
-    /* SECTIONS */
-    section { margin-bottom: 3.5rem; }
-    .section-label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #5A5A55; margin-bottom: 1.75rem;
+    .hero-left {
+      padding: 6rem 4rem;
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-    body.light .section-label { color: #B0AFA8; }
+    .hero-right {
+      padding: 6rem 4rem;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .hero-tag {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 2rem;
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 400; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--text);
+      margin-bottom: 2rem;
+    }
+    .hero-headline em { font-style: italic; }
+    .hero-asterisk { font-size: 12px; color: var(--dim); }
 
-    /* ENTRIES */
-    .entry {
+    .hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 3rem; }
+    .role-pill {
+      font-size: 11px; color: var(--muted);
+      border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px;
+    }
+
+    .hero-bio p {
+      font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+    }
+    .hero-bio p:last-child { margin-bottom: 0; }
+
+    /* SECTION ROW - full width with dividing lines */
+    .section-row {
+      display: grid;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-row.cols-2 { grid-template-columns: 1fr 1fr; }
+    .section-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .section-row.cols-4 { grid-template-columns: 280px 1fr; }
+
+    .cell {
+      padding: 4rem;
+      border-right: 1px solid var(--border);
+    }
+    .cell:last-child { border-right: none; }
+
+    .cell-label {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 2rem;
+    }
+    .cell-title {
+      font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 400; color: var(--text); line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    /* PROJECTS */
+    .project-item {
+      padding: 2.5rem 4rem;
+      border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; cursor: pointer; transition: background 0.2s;
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-item:hover { background: rgba(255,255,255,0.02); }
+    body.light .project-item:hover { background: rgba(0,0,0,0.02); }
+
+    .project-left {}
+    .project-num { font-size: 11px; color: var(--dim); margin-bottom: 1rem; letter-spacing: 0.06em; }
+    .project-name {
+      font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+      font-weight: 600; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .project-role { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+    .project-tag {
+      display: inline-block; font-size: 10px; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--bg); background: var(--text);
+      padding: 2px 8px; border-radius: 2px; margin-left: 8px;
+      vertical-align: middle; position: relative; top: -2px;
+    }
+    .project-cta {
+      font-size: 12px; color: var(--dim); margin-top: 1.5rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .project-item:hover .project-cta { color: var(--text); }
+
+    .project-right {}
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* EXPERIENCE */
+    .exp-item {
       display: grid; grid-template-columns: 1fr auto;
-      gap: 0 1.5rem; padding-bottom: 1.5rem; margin-bottom: 1.5rem;
-      border-bottom: 1px solid #2A2A27; align-items: start;
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+      align-items: start;
     }
-    body.light .entry { border-color: #E0DED7; }
-    .entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-    .entry-title {
-      font-size: 17px; font-weight: 700; color: #F0EDE6;
-      margin-bottom: 3px; letter-spacing: 0.01em; transition: color 0.3s;
-      font-family: 'Hedvig Letters Serif', serif;
+    .exp-item:last-child { border-bottom: none; }
+    .exp-name {
+      font-family: var(--serif); font-size: 16px; font-weight: 600;
+      color: var(--text); margin-bottom: 2px;
     }
-    body.light .entry-title { color: #1A1A18; }
-    .entry-sub { font-size: 14px; font-weight: 300; color: #9A9990; margin-bottom: 5px; }
-    body.light .entry-sub { color: #6B6B66; }
-    .entry-desc { font-size: 14px; font-weight: 300; color: #5A5A55; line-height: 1.65; }
-    body.light .entry-desc { color: #888780; }
-    .entry-year { font-size: 12px; font-weight: 300; color: #5A5A55; white-space: nowrap; padding-top: 2px; }
-    body.light .entry-year { color: #B0AFA8; }
+    .exp-role { font-size: 13px; color: var(--muted); }
+    .exp-year { font-size: 12px; color: var(--dim); white-space: nowrap; padding-top: 3px; }
 
-    .tag {
-      display: inline-block; font-size: 10px; font-weight: 400;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      color: #111110; background: #F0EDE6;
-      padding: 2px 7px; border-radius: 2px; margin-left: 8px;
-      vertical-align: middle; position: relative; top: -1px;
+    /* THREE COLUMNS - values skills inspo */
+    .col-title {
+      font-family: var(--serif); font-size: 13px; font-weight: 600;
+      color: var(--dim); margin-bottom: 1.5rem; letter-spacing: 0.04em;
+      text-transform: uppercase; font-size: 10px;
     }
-    body.light .tag { background: #1A1A18; color: #F7F5F0; }
+    .col-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .col-item { font-size: 14px; color: var(--muted); }
 
-    /* CLICKABLE ENTRY */
-    .entry-clickable { cursor: pointer; }
-    .entry-clickable .entry-title { text-decoration: underline; text-decoration-color: #3A3A37; text-underline-offset: 3px; }
-    body.light .entry-clickable .entry-title { text-decoration-color: #C0BEB8; }
-    .entry-clickable:hover .entry-title { text-decoration-color: #F0EDE6; }
-    body.light .entry-clickable:hover .entry-title { text-decoration-color: #1A1A18; }
+    /* HOW I OPERATE */
+    .operate-item {
+      display: grid; grid-template-columns: 3rem 1fr;
+      padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .operate-item:last-child { border-bottom: none; }
+    .operate-num { font-size: 11px; color: var(--dim); padding-top: 4px; }
+    .operate-title {
+      font-family: var(--serif); font-size: 16px; font-weight: 600;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .operate-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
     /* POPUP */
     .overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0,0,0,0.6); z-index: 100;
-      align-items: center; justify-content: center;
-      padding: 2rem;
+      background: rgba(0,0,0,0.7); z-index: 100;
+      align-items: center; justify-content: center; padding: 2rem;
     }
     .overlay.open { display: flex; }
-    body.light .overlay { background: rgba(0,0,0,0.35); }
-
     .popup {
-      background: #1A1A18; border: 1px solid #2A2A27;
-      border-radius: 4px; max-width: 560px; width: 100%;
-      padding: 2rem 2.25rem; position: relative;
-      max-height: 80vh; overflow-y: auto;
+      background: #1a1a18; border: 1px solid #2a2a27;
+      border-radius: 6px; max-width: 600px; width: 100%;
+      padding: 2.5rem; position: relative; max-height: 85vh; overflow-y: auto;
     }
-    body.light .popup { background: #FFFFFF; border-color: #E0DED7; }
-
-    .popup-close {
+    body.light .popup { background: #fff; border-color: #e0ded7; }
+    .popup-x {
       position: absolute; top: 1.25rem; right: 1.25rem;
       background: none; border: none; cursor: pointer;
-      color: #5A5A55; font-size: 18px; line-height: 1;
-      font-family: 'Lexend Deca', sans-serif;
+      color: var(--dim); font-size: 17px; font-family: var(--sans);
     }
-    .popup-close:hover { color: #F0EDE6; }
-    body.light .popup-close:hover { color: #1A1A18; }
-
+    .popup-x:hover { color: var(--text); }
     .popup-title {
-      font-size: 18px; font-weight: 500; color: #F0EDE6;
-      margin-bottom: 0.3rem; transition: color 0.3s;
-      font-family: 'Hedvig Letters Serif', serif;
+      font-family: var(--serif); font-size: 22px; font-weight: 600;
+      color: var(--text); margin-bottom: 4px;
     }
-    body.light .popup-title { color: #1A1A18; }
-    .popup-meta { font-size: 12px; color: #5A5A55; margin-bottom: 1.5rem; }
-    body.light .popup-meta { color: #B0AFA8; }
-
-    .popup-timeline { margin-bottom: 1.5rem; }
-    .popup-tl-item {
-      padding: 0.6rem 0 0.6rem 0.85rem;
-      border-left: 1px solid #2A2A27;
-      margin-bottom: 0.15rem;
-    }
-    body.light .popup-tl-item { border-color: #E0DED7; }
-    .popup-tl-item:last-child { margin-bottom: 0; }
-    .popup-tl-date {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-      color: #F0EDE6; margin-bottom: 0.25rem;
-      text-transform: uppercase;
-      font-family: 'Hedvig Letters Serif', serif;
-    }
-    body.light .popup-tl-date { color: #1A1A18; }
-    .popup-tl-item p {
-      font-size: 13px !important;
-      line-height: 1.6 !important;
-      color: #9A9990 !important;
-      margin-bottom: 0 !important;
-    }
-    body.light .popup-tl-item p { color: #6B6B66 !important; }
-    .popup-conclusion {
-      border-top: 1px solid #2A2A27;
-      padding-top: 1rem;
-      margin-top: 1rem;
-    }
-    body.light .popup-conclusion { border-color: #E0DED7; }
-    .popup-conclusion p {
-      font-size: 13px !important;
-      color: #9A9990 !important;
-      line-height: 1.7 !important;
-    }
-    body.light .popup-conclusion p { color: #6B6B66 !important; }
-      font-size: 13px; font-weight: 300; color: #9A9990;
-      line-height: 1.75; margin-bottom: 1rem;
-    }
-    body.light .popup-body p { color: #6B6B66; }
-    .popup-body p:last-child { margin-bottom: 0; }
-
+    .popup-meta { font-size: 12px; color: var(--dim); margin-bottom: 1.25rem; }
+    .popup-stats { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
     .popup-stat {
-      display: inline-block; font-size: 11px; font-weight: 400;
-      color: #F0EDE6; border: 1px solid #2A2A27;
-      padding: 3px 9px; border-radius: 2px; margin: 0 6px 6px 0;
+      font-size: 11px; color: var(--muted); border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 2px;
     }
-    body.light .popup-stat { color: #1A1A18; border-color: #E0DED7; }
+    .tl-item {
+      padding: 0.65rem 0 0.65rem 1rem;
+      border-left: 1px solid var(--border); margin-bottom: 0.1rem;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-date {
+      font-family: var(--serif); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text); margin-bottom: 0.25rem;
+    }
+    .tl-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .tl-conclusion {
+      border-top: 1px solid var(--border); padding-top: 1.1rem; margin-top: 1.1rem;
+    }
+    .tl-conclusion p { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
     /* FOOTER */
-    footer {
-      padding: 2.5rem 0 3.5rem; border-top: 1px solid #2A2A27;
-      display: flex; justify-content: space-between; align-items: center;
+    .footer-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border);
     }
-    body.light footer { border-color: #E0DED7; }
-    .footer-links { display: flex; gap: 1.75rem; }
-    .footer-links a { font-size: 13px; font-weight: 300; color: #9A9990; transition: color 0.2s; }
-    body.light .footer-links a { color: #6B6B66; }
-    .footer-links a:hover { color: #F0EDE6; }
-    body.light .footer-links a:hover { color: #1A1A18; }
-    .footer-copy { font-size: 12px; color: #5A5A55; }
-    body.light .footer-copy { color: #B0AFA8; }
+    .footer-left {
+      padding: 4rem; border-right: 1px solid var(--border);
+    }
+    .footer-right { padding: 4rem; }
+    .footer-cta {
+      font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+      font-weight: 400; color: var(--text); line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 12px; color: var(--dim); margin-top: 3rem; }
 
     /* LANG */
     [data-lang="es"] .en { display: none; }
     [data-lang="en"] .es { display: none; }
 
-    @media (max-width: 520px) {
-      nav { flex-direction: column; gap: 1.25rem; }
-      .entry { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 1rem; align-items: flex-start; }
+    @media (max-width: 768px) {
+      nav { padding: 1.5rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+      .hero-right { padding: 3rem 1.5rem; }
+      .section-row.cols-2, .section-row.cols-3, .section-row.cols-4 { grid-template-columns: 1fr; }
+      .cell { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
+      .project-item { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+      .footer-row { grid-template-columns: 1fr; }
+      .footer-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+      .footer-right { padding: 3rem 1.5rem; }
     }
   </style>
 </head>
 <body data-lang="en">
 
 <!-- POPUPS -->
-<div class="overlay" id="popup-rush" onclick="closePopup(event, 'popup-rush')">
+<div class="overlay" id="popup-rush" onclick="closePopup(event,'popup-rush')">
   <div class="popup">
-    <button class="popup-close" onclick="closePopupBtn('popup-rush')">✕</button>
+    <button class="popup-x" onclick="closePopupBtn('popup-rush')">✕</button>
     <div class="popup-title">Rush Studio</div>
-    <div class="popup-meta en">Co-founder · 2025–present · Caracas</div>
-    <div class="popup-meta es">Co-fundador · 2025–presente · Caracas</div>
-    <div style="margin-bottom:1.25rem;">
+    <div class="popup-meta en">Co-Founder & CEO · Nov 2025 – Present · Caracas</div>
+    <div class="popup-meta es">Co-Fundador & CEO · Nov 2025 – Presente · Caracas</div>
+    <div class="popup-stats">
       <span class="popup-stat en">AI & Automation</span>
-      <span class="popup-stat en">Web Development</span>
+      <span class="popup-stat en">Web Dev</span>
       <span class="popup-stat en">Chatbots</span>
       <span class="popup-stat es">IA & Automatización</span>
       <span class="popup-stat es">Desarrollo Web</span>
       <span class="popup-stat es">Chatbots</span>
     </div>
-    <div class="popup-body">
-
-      <div class="popup-timeline">
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Nov 2025 — Brand Foundation</div>
-          <div class="popup-tl-date es">Nov 2025 — Identidad de Marca</div>
-          <p class="en">Built the entire brand identity from scratch alongside co-founder Steven Corredor. Every detail — from visual language to tone of voice — was crafted to meet a standard of quality that Latin American businesses rarely get access to.</p>
-          <p class="es">Construimos la identidad de marca desde cero junto a Steven Corredor. Cada detalle — desde el lenguaje visual hasta el tono de voz — fue diseñado para alcanzar un estándar de calidad que los negocios latinoamericanos rara vez tienen acceso.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Dec 2025 — Market Strategy</div>
-          <div class="popup-tl-date es">Dic 2025 — Estrategia de Mercado</div>
-          <p class="en">Defined our service offering and go-to-market approach. Identified the right positioning for the Venezuelan and broader Latin American market, working with both low and high ticket clients.</p>
-          <p class="es">Definimos nuestra oferta de servicios y enfoque de go-to-market. Identificamos el posicionamiento correcto para el mercado venezolano y latinoamericano, trabajando con clientes de bajo y alto ticket.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Jan 2026 — Launch Preparation</div>
-          <div class="popup-tl-date es">Ene 2026 — Preparación de Lanzamiento</div>
-          <p class="en">Developed our full launch strategy and built out the website — the first public face of Rush Studio.</p>
-          <p class="es">Desarrollamos la estrategia de lanzamiento completa y construimos la página web — la primera cara pública de Rush Studio.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Feb 2026 — Official Launch</div>
-          <div class="popup-tl-date es">Feb 2026 — Lanzamiento Oficial</div>
-          <p class="en">Took Rush Studio live. Established our marketing strategy with quality as the non-negotiable priority at every stage of every process.</p>
-          <p class="es">Lanzamos Rush Studio oficialmente. Establecimos nuestra estrategia de marketing con la calidad como prioridad innegociable en cada etapa de cada proceso.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Mar 2026 — Scaling</div>
-          <div class="popup-tl-date es">Mar 2026 — Expansión</div>
-          <p class="en">Created and expanded strategic departments to support the company's growth — building the internal infrastructure needed to scale without compromising on what matters most: the work.</p>
-          <p class="es">Creamos y expandimos departamentos estratégicos para impulsar el crecimiento — construyendo la infraestructura interna necesaria para escalar sin comprometer lo que más importa: el trabajo.</p>
-        </div>
-      </div>
-
-      <div class="popup-conclusion">
-        <p class="en">Rush Studio is not a sprint — it's a long game. We move step by step because our priority has always been, and always will be, delivering the best possible quality to every client who trusts us. We're not building just another agency. We're building a standard. The goal isn't to grow fast — it's to grow right, and in the process prove that from Venezuela, you can build something to be proud of.</p>
-        <p class="es">Rush Studio no es un sprint — es una carrera larga. Vamos paso a paso porque nuestra prioridad siempre ha sido, y siempre será, dar la mejor calidad posible a cada cliente que confía en nosotros. No estamos construyendo una agencia más. Estamos construyendo un estándar. La meta no es crecer rápido — es crecer bien, y en el proceso demostrar que desde Venezuela se puede construir algo del que estar orgulloso.</p>
-      </div>
-
+    <div class="tl-item">
+      <div class="tl-date en">Nov 2025 — Brand Foundation</div>
+      <div class="tl-date es">Nov 2025 — Identidad de Marca</div>
+      <div class="tl-text en">Built the entire brand identity from scratch alongside Steven Corredor. Every detail crafted to meet a standard of quality that Latin American businesses rarely get access to.</div>
+      <div class="tl-text es">Construimos la identidad de marca desde cero junto a Steven Corredor. Cada detalle diseñado para alcanzar un estándar de calidad que los negocios latinoamericanos rara vez tienen acceso.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Dec 2025 — Market Strategy</div>
+      <div class="tl-date es">Dic 2025 — Estrategia de Mercado</div>
+      <div class="tl-text en">Defined our service offering and go-to-market. Identified the right positioning for the Venezuelan and broader Latin American market.</div>
+      <div class="tl-text es">Definimos nuestra oferta y go-to-market. Identificamos el posicionamiento correcto para el mercado venezolano y latinoamericano.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Jan 2026 — Launch Preparation</div>
+      <div class="tl-date es">Ene 2026 — Preparación</div>
+      <div class="tl-text en">Developed the full launch strategy and built the website — the first public face of Rush Studio.</div>
+      <div class="tl-text es">Desarrollamos la estrategia de lanzamiento y construimos la página web — la primera cara pública de Rush Studio.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Feb 2026 — Official Launch</div>
+      <div class="tl-date es">Feb 2026 — Lanzamiento</div>
+      <div class="tl-text en">Took Rush Studio live. Quality as the non-negotiable priority at every stage.</div>
+      <div class="tl-text es">Lanzamos Rush Studio. La calidad como prioridad innegociable en cada etapa.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Mar 2026 — Scaling</div>
+      <div class="tl-date es">Mar 2026 — Expansión</div>
+      <div class="tl-text en">Created and expanded strategic departments to scale without compromising the work.</div>
+      <div class="tl-text es">Creamos y expandimos departamentos estratégicos para escalar sin comprometer el trabajo.</div>
+    </div>
+    <div class="tl-conclusion">
+      <p class="en">Rush Studio is not a sprint — it's a long game. The goal isn't to grow fast — it's to grow right, and prove that from Venezuela, you can build something to be proud of.</p>
+      <p class="es">Rush Studio no es un sprint — es una carrera larga. La meta no es crecer rápido — es crecer bien, y demostrar que desde Venezuela se puede construir algo del que estar orgulloso.</p>
     </div>
   </div>
 </div>
 
-<div class="overlay" id="popup-glitched" onclick="closePopup(event, 'popup-glitched')">
+<div class="overlay" id="popup-glitched" onclick="closePopup(event,'popup-glitched')">
   <div class="popup">
-    <button class="popup-close" onclick="closePopupBtn('popup-glitched')">✕</button>
+    <button class="popup-x" onclick="closePopupBtn('popup-glitched')">✕</button>
     <div class="popup-title">Glitched Emails</div>
     <div class="popup-meta en">Co-Founder & COO · Feb 2022 – Jan 2023 · Miami</div>
     <div class="popup-meta es">Co-Fundador & COO · Feb 2022 – Ene 2023 · Miami</div>
-    <div style="margin-bottom:1.25rem;">
+    <div class="popup-stats">
       <span class="popup-stat">300+ users</span>
       <span class="popup-stat">400+ accounts/week</span>
       <span class="popup-stat">AWS</span>
     </div>
-    <div class="popup-body">
-      <div class="popup-timeline">
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Feb 2022 — Spotting the Opportunity</div>
-          <div class="popup-tl-date es">Feb 2022 — Identificando la Oportunidad</div>
-          <p class="en">After building Polar Proxies, I identified an untapped market inside the sneaker reselling world. Buyers were using bots to generate thousands of tasks with unique cards and addresses — but to bypass waitlists, accounts needed to be recognized as human. High sender reputation was the missing piece.</p>
-          <p class="es">Después de construir Polar Proxies, identifiqué un mercado sin explotar dentro del mundo de la reventa de sneakers. Los compradores usaban bots para generar miles de tasks con tarjetas y direcciones únicas — pero para pasar las listas de espera, las cuentas necesitaban ser reconocidas como humanas. La reputación del remitente era la pieza que faltaba.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Mar 2022 — Building the Infrastructure</div>
-          <div class="popup-tl-date es">Mar 2022 — Construyendo la Infraestructura</div>
-          <p class="en">Engineered a system that farmed thousands of email accounts at scale, hosted on servers in Virginia, each running on unique high-quality IPs. The infrastructure automatically raised each account's sender score, making them appear as legitimate human users.</p>
-          <p class="es">Construí un sistema que generaba miles de cuentas de email a escala, alojadas en servidores en Virginia, cada una con IPs únicas de alta calidad. La infraestructura subía automáticamente el score de cada cuenta, haciéndolas aparecer como usuarios humanos legítimos.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Apr 2022 — First Clients</div>
-          <div class="popup-tl-date es">Abr 2022 — Primeros Clientes</div>
-          <p class="en">Launched the service and acquired the first paying clients. Word spread fast inside the reselling community — the results were immediate and consistent.</p>
-          <p class="es">Lancé el servicio y conseguí los primeros clientes de pago. La noticia se esparció rápido dentro de la comunidad de reventa — los resultados fueron inmediatos y consistentes.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">May 2022 – Jan 2023 — Scaling & Automating</div>
-          <div class="popup-tl-date es">May 2022 – Ene 2023 — Escalando y Automatizando</div>
-          <p class="en">Built a self-service web platform so clients could purchase, manage, and monitor their services in real time. Automated the full revenue cycle from onboarding to weekly recurring invoicing. Grew to 300+ active users with zero manual intervention.</p>
-          <p class="es">Construí una plataforma web de autoservicio para que los clientes pudieran comprar, gestionar y monitorear sus servicios en tiempo real. Automaticé el ciclo de ingresos completo desde el onboarding hasta la facturación semanal. Crecí a 300+ usuarios activos con cero intervención manual.</p>
-        </div>
-      </div>
-      <div class="popup-conclusion">
-        <p class="en">What I take from Glitched Emails isn't the product or the numbers — it's what I learned about myself. I was 15, facing real problems, and instead of giving up I found an opportunity where no one else was looking. I've always believed the best businesses are born from watching what others ignore. When the reselling market started to fall, I didn't hold on — I went looking for the next problem worth solving. That's what I'm still doing today.</p>
-        <p class="es">Lo que más me llevo de Glitched Emails no es el producto ni los números — es lo que aprendí sobre mí mismo. Tenía 15 años, enfrentando problemas reales, y en vez de rendirme encontré una oportunidad donde nadie más miraba. Siempre he creído que los mejores negocios nacen de observar lo que otros ignoran. Cuando el mercado de reventa empezó a caer, no me aferré — decidí buscar el próximo problema que valiera la pena resolver. Eso es lo que sigo haciendo hoy.</p>
-      </div>
+    <div class="tl-item">
+      <div class="tl-date en">Feb 2022 — Spotting the Opportunity</div>
+      <div class="tl-date es">Feb 2022 — La Oportunidad</div>
+      <div class="tl-text en">After Polar Proxies, I identified an untapped market. Sneaker resellers needed their accounts to appear human to bypass waitlists. High sender reputation was the missing piece.</div>
+      <div class="tl-text es">Después de Polar Proxies, identifiqué un mercado sin explotar. Los revendedores necesitaban que sus cuentas parecieran humanas para pasar las listas de espera.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Mar 2022 — Building the Infrastructure</div>
+      <div class="tl-date es">Mar 2022 — La Infraestructura</div>
+      <div class="tl-text en">Engineered a system farming thousands of email accounts on Virginia servers with unique high-quality IPs. What took weeks, I delivered in days.</div>
+      <div class="tl-text es">Construí un sistema que generaba miles de cuentas en servidores en Virginia con IPs únicas de alta calidad. Lo que tardaba semanas, lo entregaba en días.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Apr 2022 — First Clients</div>
+      <div class="tl-date es">Abr 2022 — Primeros Clientes</div>
+      <div class="tl-text en">Launched and acquired first paying clients. Word spread fast — results were immediate and consistent.</div>
+      <div class="tl-text es">Lancé y conseguí los primeros clientes. La noticia se esparció rápido — los resultados fueron inmediatos.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">May 2022 – Jan 2023 — Scaling</div>
+      <div class="tl-date es">May 2022 – Ene 2023 — Escalando</div>
+      <div class="tl-text en">Built a self-service platform. Automated the full revenue cycle. Grew to 300+ active users with zero manual intervention.</div>
+      <div class="tl-text es">Construí una plataforma de autoservicio. Automaticé el ciclo de ingresos. Crecí a 300+ usuarios con cero intervención manual.</div>
+    </div>
+    <div class="tl-conclusion">
+      <p class="en">I was 15, facing real problems, and instead of giving up I found an opportunity where no one else was looking. When the market fell, I went looking for the next problem worth solving. That's what I'm still doing today.</p>
+      <p class="es">Tenía 15 años y en vez de rendirme encontré una oportunidad donde nadie más miraba. Cuando el mercado cayó, busqué el próximo problema que valiera la pena resolver. Eso es lo que sigo haciendo hoy.</p>
     </div>
   </div>
 </div>
 
-<div class="overlay" id="popup-polar" onclick="closePopup(event, 'popup-polar')">
+<div class="overlay" id="popup-polar" onclick="closePopup(event,'popup-polar')">
   <div class="popup">
-    <button class="popup-close" onclick="closePopupBtn('popup-polar')">✕</button>
+    <button class="popup-x" onclick="closePopupBtn('popup-polar')">✕</button>
     <div class="popup-title">Polar Proxies</div>
     <div class="popup-meta en">Founder & COO · Feb 2021 – Jan 2022 · Miami</div>
     <div class="popup-meta es">Fundador & COO · Feb 2021 – Ene 2022 · Miami</div>
-    <div style="margin-bottom:1.25rem;">
+    <div class="popup-stats">
       <span class="popup-stat">600+ members</span>
       <span class="popup-stat en">6-figure potential</span>
       <span class="popup-stat es">6 cifras</span>
     </div>
-    <div class="popup-body">
-      <div class="popup-timeline">
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Feb 2021 — The Idea</div>
-          <div class="popup-tl-date es">Feb 2021 — La Idea</div>
-          <p class="en">Coming from the sneaker reselling world, I spotted a clear gap in the market. Buyers needed high-quality residential IPs to run their bots effectively and cop limited releases at scale. I decided to build the infrastructure that would give them exactly that.</p>
-          <p class="es">Viniendo del mundo de la reventa de sneakers, identifiqué un hueco claro en el mercado. Los compradores necesitaban IPs residenciales de alta calidad para correr sus bots de forma efectiva y comprar lanzamientos limitados a escala. Decidí construir la infraestructura que les daría exactamente eso.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Mar 2021 — Building & Legalizing</div>
-          <div class="popup-tl-date es">Mar 2021 — Construyendo y Legalizando</div>
-          <p class="en">At 14 years old, I registered my first official company. It was scary — but I did it. Set up the full technical infrastructure, sourced the IPs, and built the product from scratch.</p>
-          <p class="es">Con 14 años, registré mi primera empresa oficial. Daba miedo — pero lo hice. Monté la infraestructura técnica completa, conseguí los IPs y construí el producto desde cero.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">Apr 2021 — Community & Growth</div>
-          <div class="popup-tl-date es">Abr 2021 — Comunidad y Crecimiento</div>
-          <p class="en">Built a Discord community of 600–800 members from zero, through marketing and genuine connections made inside the sneaker reselling world. Word of mouth did the rest.</p>
-          <p class="es">Construí una comunidad en Discord de 600–800 miembros desde cero, a través de marketing y conexiones genuinas dentro del mundo de la reventa. El boca a boca hizo el resto.</p>
-        </div>
-        <div class="popup-tl-item">
-          <div class="popup-tl-date en">May 2021 – Jan 2022 — Running the Business</div>
-          <div class="popup-tl-date es">May 2021 – Ene 2022 — Operando el Negocio</div>
-          <p class="en">Helped clients cop 5,000+ pairs of sneakers. Managed pricing strategy, cost structure, P&L, and a fully automated payment system that processed transactions 24/7 with zero manual intervention.</p>
-          <p class="es">Ayudé a clientes a comprar más de 5,000 pares de sneakers. Gestioné la estrategia de precios, estructura de costos, P&L y un sistema de pagos completamente automatizado que procesaba transacciones 24/7 sin intervención manual.</p>
+    <div class="tl-item">
+      <div class="tl-date en">Feb 2021 — The Idea</div>
+      <div class="tl-date es">Feb 2021 — La Idea</div>
+      <div class="tl-text en">Sneaker resellers needed high-quality residential IPs to run bots at scale. I decided to build the infrastructure that would give them exactly that.</div>
+      <div class="tl-text es">Los revendedores de sneakers necesitaban IPs residenciales de alta calidad para sus bots. Decidí construir la infraestructura que les daría exactamente eso.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Mar 2021 — Building & Legalizing</div>
+      <div class="tl-date es">Mar 2021 — Construyendo y Legalizando</div>
+      <div class="tl-text en">At 14, I registered my first official company. It was scary — but I did it. Built the full technical infrastructure from scratch.</div>
+      <div class="tl-text es">A los 14, registré mi primera empresa oficial. Daba miedo — pero lo hice. Construí toda la infraestructura técnica desde cero.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Apr 2021 — Community & Growth</div>
+      <div class="tl-date es">Abr 2021 — Comunidad</div>
+      <div class="tl-text en">Built a Discord community of 600–800 members from zero through marketing and genuine connections. Word of mouth did the rest.</div>
+      <div class="tl-text es">Construí una comunidad de 600–800 miembros desde cero. El boca a boca hizo el resto.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">May 2021 – Jan 2022 — Running the Business</div>
+      <div class="tl-date es">May 2021 – Ene 2022 — Operando</div>
+      <div class="tl-text en">Helped clients cop 5,000+ pairs of sneakers. Managed P&L and a fully automated payment system processing transactions 24/7.</div>
+      <div class="tl-text es">Ayudé a clientes a comprar 5,000+ pares de sneakers. Gestioné P&L y un sistema de pagos automatizado 24/7.</div>
+    </div>
+    <div class="tl-conclusion">
+      <p class="en">Closing it wasn't failure — it was honesty. The stress was real, my studies mattered more. Today I look back with nothing but pride. Not for the numbers, but for having started.</p>
+      <p class="es">Cerrarla no fue fracasar — fue ser honesto. El estrés era real, mis estudios importaban más. Hoy miro para atrás con orgullo. No por los números, sino por haber empezado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<nav>
+  <div class="nav-left">
+    <span class="nav-name">AMG</span>
+    <span class="nav-sub">Andrés Miguel Gutiérrez Reinoso</span>
+  </div>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="toggleLang(this)">ES</button>
+    <button class="nav-btn" onclick="toggleTheme(this)">Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-tag en">Welcome</div>
+      <div class="hero-tag es">Bienvenido</div>
+      <h1 class="hero-headline en">Building companies —<br><em>still at it.</em></h1>
+      <h1 class="hero-headline es">Construyendo empresas —<br><em>sigo en ello.</em></h1>
+      <div class="hero-asterisk en">*Since 14 years old</div>
+      <div class="hero-asterisk es">*Desde los 14 años</div>
+    </div>
+    <div class="hero-roles">
+      <span class="role-pill en">Founder</span>
+      <span class="role-pill en">Strategist</span>
+      <span class="role-pill en">Marketer</span>
+      <span class="role-pill en">Automation Expert</span>
+      <span class="role-pill en">AI Specialist</span>
+      <span class="role-pill es">Fundador</span>
+      <span class="role-pill es">Estratega</span>
+      <span class="role-pill es">Marketer</span>
+      <span class="role-pill es">Experto en Automatización</span>
+      <span class="role-pill es">Especialista en IA</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bio">
+      <p class="en">Hi, I'm Andrés. I grew up on the internet, building things before I knew what entrepreneurship meant. My first company was at 14 — registered, legal, operating. Since then I haven't stopped.</p>
+      <p class="en">Right now I'm building Rush Studio — an AI and automation agency helping Latin American businesses work smarter, move faster, and compete at a higher level.</p>
+      <p class="en">I'm playing a long game. The goal isn't just to build companies — it's to build the kind of infrastructure and economic activity that creates real opportunities for people in Venezuela and across the region.</p>
+      <p class="es">Hola, soy Andrés. Crecí en internet, construyendo cosas antes de saber lo que era el emprendimiento. Mi primera empresa fue a los 14 años — registrada, legal, operando. Desde entonces no he parado.</p>
+      <p class="es">Ahora mismo estoy construyendo Rush Studio — una agencia de IA y automatización que ayuda a los negocios latinoamericanos a trabajar más inteligente y competir a un nivel más alto.</p>
+      <p class="es">Estoy jugando a largo plazo. El objetivo no es solo construir empresas — es construir infraestructura y actividad económica que crea oportunidades reales para la gente en Venezuela y en toda la región.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS HEADER -->
+<div class="section-row cols-4" style="border-bottom:1px solid var(--border);">
+  <div class="cell" style="display:flex; align-items:center;">
+    <div>
+      <div class="cell-label en">Featured projects</div>
+      <div class="cell-label es">Proyectos</div>
+      <div class="cell-title en">What I've<br>built</div>
+      <div class="cell-title es">Lo que he<br>construido</div>
+    </div>
+  </div>
+  <div class="cell" style="display:flex; align-items:flex-end;">
+    <p style="font-size:14px; color:var(--muted); line-height:1.75;" class="en">Click any project to see the full story — the timeline, the decisions, and what I learned.</p>
+    <p style="font-size:14px; color:var(--muted); line-height:1.75;" class="es">Haz click en cualquier proyecto para ver la historia completa — el timeline, las decisiones, y lo que aprendí.</p>
+  </div>
+</div>
+
+<!-- PROJECTS LIST -->
+<div style="border-bottom:1px solid var(--border);">
+  <div class="project-item" onclick="openPopup('popup-rush')">
+    <div class="project-left">
+      <div class="project-num">01</div>
+      <div class="project-name">Rush Studio <span class="project-tag">Active</span></div>
+      <div class="project-role en">Co-Founder & CEO · 2025–present</div>
+      <div class="project-role es">Co-Fundador & CEO · 2025–presente</div>
+      <div class="project-cta en">See full story →</div>
+      <div class="project-cta es">Ver historia completa →</div>
+    </div>
+    <div class="project-right">
+      <div class="project-desc en">AI and automation agency for Latin American businesses. Co-founded with Armando (CTO) and Steven Corredor (CMO). Web development, dashboards, process automation, and AI chatbots.</div>
+      <div class="project-desc es">Agencia de IA y automatización para negocios latinoamericanos. Co-fundada con Armando (CTO) y Steven Corredor (CMO). Desarrollo web, dashboards, automatización y chatbots.</div>
+    </div>
+  </div>
+  <div class="project-item" onclick="openPopup('popup-glitched')">
+    <div class="project-left">
+      <div class="project-num">02</div>
+      <div class="project-name">Glitched Emails</div>
+      <div class="project-role en">Co-Founder & COO · 2022–2023</div>
+      <div class="project-role es">Co-Fundador & COO · 2022–2023</div>
+      <div class="project-cta en">See full story →</div>
+      <div class="project-cta es">Ver historia completa →</div>
+    </div>
+    <div class="project-right">
+      <div class="project-desc en">Email deliverability optimization for the sneaker reselling market. Engineered AWS infrastructure managing 400+ accounts weekly. 300+ active users with a fully automated revenue cycle.</div>
+      <div class="project-desc es">Optimización de deliverability de email para el mercado de reventa de sneakers. Infraestructura AWS con 400+ cuentas semanales. 300+ usuarios con ciclo de ingresos automatizado.</div>
+    </div>
+  </div>
+  <div class="project-item" onclick="openPopup('popup-polar')">
+    <div class="project-left">
+      <div class="project-num">03</div>
+      <div class="project-name">Polar Proxies</div>
+      <div class="project-role en">Founder & COO · 2021–2022</div>
+      <div class="project-role es">Fundador & COO · 2021–2022</div>
+      <div class="project-cta en">See full story →</div>
+      <div class="project-cta es">Ver historia completa →</div>
+    </div>
+    <div class="project-right">
+      <div class="project-desc en">IP proxy services for the sneaker reselling market. Built from zero to 600+ active members. First company registered at 14 — six-figure revenue potential within months.</div>
+      <div class="project-desc es">Servicios de proxies IP para el mercado de reventa. Construido de cero a 600+ miembros activos. Primera empresa registrada a los 14 años — potencial de seis cifras en meses.</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE + VALUES/SKILLS/INSPO -->
+<div class="section-row cols-2">
+  <div class="cell">
+    <div class="cell-label en">Experience</div>
+    <div class="cell-label es">Experiencia</div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-name">QuantumReach Growth Agency</div>
+        <div class="exp-role en">Strategy & Growth Analyst · Madrid</div>
+        <div class="exp-role es">Analista de Estrategia · Madrid</div>
+      </div>
+      <div class="exp-year">2024</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-name">RG Group</div>
+        <div class="exp-role en">Strategy · Venezuela</div>
+        <div class="exp-role es">Estrategia · Venezuela</div>
+      </div>
+      <div class="exp-year">2023</div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-name">Universidad Francisco de Vitoria</div>
+        <div class="exp-role en">Marketing & Digital Transformation · Madrid</div>
+        <div class="exp-role es">Marketing y Transformación Digital · Madrid</div>
+      </div>
+      <div class="exp-year">2023–2027</div>
+    </div>
+  </div>
+  <div class="cell">
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem; height:100%;">
+      <div>
+        <div class="col-title en">Values</div>
+        <div class="col-title es">Valores</div>
+        <div class="col-list">
+          <span class="col-item en">Build to last</span>
+          <span class="col-item en">Quality over speed</span>
+          <span class="col-item en">Honesty</span>
+          <span class="col-item en">Long-term thinking</span>
+          <span class="col-item en">Grit</span>
+          <span class="col-item en">Opportunity in every problem</span>
+          <span class="col-item en">Rootedness</span>
+          <span class="col-item en">Ownership</span>
+          <span class="col-item es">Construir para durar</span>
+          <span class="col-item es">Calidad sobre velocidad</span>
+          <span class="col-item es">Honestidad</span>
+          <span class="col-item es">Visión a largo plazo</span>
+          <span class="col-item es">Determinación</span>
+          <span class="col-item es">Oportunidad en cada problema</span>
+          <span class="col-item es">Arraigo</span>
+          <span class="col-item es">Responsabilidad</span>
         </div>
       </div>
-      <div class="popup-conclusion">
-        <p class="en">Polar Proxies was my first real company — registered, legal, operating. I was 14 and felt the weight of that responsibility in a way I never had before. It was also the first time I had to make a hard call: closing it. Not because it failed, but because I was honest with myself. The stress was real, my studies mattered more, and I knew how to recognize when it wasn't the right time. Today I look back and feel nothing but pride — not for the numbers, but for having started.</p>
-        <p class="es">Polar Proxies fue mi primera empresa real — registrada, legal, operando. Tenía 14 años y sentí el peso de esa responsabilidad de una forma que nunca había sentido. Fue también la primera vez que tuve que tomar una decisión difícil: cerrarla. No porque fracasara, sino porque fui honesto conmigo mismo. El estrés era real, mis estudios importaban más, y supe reconocer que no era el momento. Hoy miro para atrás y solo siento orgullo — no de los números, sino de haber empezado.</p>
+      <div>
+        <div class="col-title en">Skillset</div>
+        <div class="col-title es">Habilidades</div>
+        <div class="col-list">
+          <span class="col-item en">0→1 building</span>
+          <span class="col-item en">Market gaps</span>
+          <span class="col-item en">Community building</span>
+          <span class="col-item en">AI & Automation</span>
+          <span class="col-item en">Brand & identity</span>
+          <span class="col-item en">Go-to-market</span>
+          <span class="col-item en">Systems thinking</span>
+          <span class="col-item en">Marketing</span>
+          <span class="col-item en">Resilience</span>
+          <span class="col-item en">Execution</span>
+          <span class="col-item es">Construir de cero</span>
+          <span class="col-item es">Identificar mercados</span>
+          <span class="col-item es">Comunidades</span>
+          <span class="col-item es">IA y Automatización</span>
+          <span class="col-item es">Marca e identidad</span>
+          <span class="col-item es">Go-to-market</span>
+          <span class="col-item es">Pensamiento sistémico</span>
+          <span class="col-item es">Marketing</span>
+          <span class="col-item es">Resiliencia</span>
+          <span class="col-item es">Ejecución</span>
+        </div>
+      </div>
+      <div>
+        <div class="col-title en">Inspirations</div>
+        <div class="col-title es">Inspiraciones</div>
+        <div class="col-list">
+          <span class="col-item">Steve Jobs</span>
+          <span class="col-item">Dario Amodei</span>
+          <span class="col-item">Ryan Holiday</span>
+          <span class="col-item">James Clear</span>
+          <span class="col-item en">Stoicism</span>
+          <span class="col-item en">Venezuela</span>
+          <span class="col-item en">Building from zero</span>
+          <span class="col-item en">Long-term thinking</span>
+          <span class="col-item es">Estoicismo</span>
+          <span class="col-item es">Venezuela</span>
+          <span class="col-item es">Construir desde cero</span>
+          <span class="col-item es">Visión a largo plazo</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="wrap">
-
-  <nav>
-    <a href="#" style="text-decoration:none;">
-      <div class="nav-name">
-        <span class="nav-name-big">AMG</span>
-        <span class="nav-name-small">Andrés Miguel Gutiérrez Reinoso</span>
-      </div>
-    </a>
-    <div class="nav-btns">
-      <button class="btn" onclick="toggleLang(this)">ES</button>
-      <button class="btn" onclick="toggleTheme(this)">Light</button>
+<!-- HOW I OPERATE -->
+<div class="section-row cols-4" style="border-bottom:1px solid var(--border);">
+  <div class="cell" style="display:flex; align-items:center;">
+    <div>
+      <div class="cell-label en">Principles</div>
+      <div class="cell-label es">Principios</div>
+      <div class="cell-title en">How I<br>operate</div>
+      <div class="cell-title es">Cómo<br>trabajo</div>
     </div>
-  </nav>
-
-  <div class="hero" id="about">
-    <h1 class="en">Entrepreneur at 14. <strong>Still at it.</strong></h1>
-    <h1 class="es">Emprendedor a los 14. <strong>Sigo en ello.</strong></h1>
-    <p class="en">I build companies — and I'm just getting started. Over the next 10 to 15 years, I'm working toward something bigger than any single business: helping rebuild Venezuela. Not through politics, but through the kind of infrastructure, technology, and economic activity that gives people real opportunities. Every venture I build today is part of that plan.</p>
-    <p class="es">Construyo empresas — y apenas estoy comenzando. En los próximos 10 a 15 años, trabajo hacia algo más grande que cualquier negocio: ayudar a reconstruir Venezuela. No desde la política, sino desde la infraestructura, la tecnología y la actividad económica que le da a la gente oportunidades reales. Cada empresa que construyo hoy es parte de ese plan.</p>
   </div>
-
-  <hr />
-
-  <section id="projects">
-    <p class="section-label">Projects</p>
-
-    <div class="entry entry-clickable" onclick="openPopup('popup-rush')">
+  <div class="cell">
+    <div class="operate-item">
+      <div class="operate-num">01</div>
       <div>
-        <div class="entry-title">Rush Studio <span class="tag">Active</span></div>
-        <div class="entry-sub en">Co-founder · rushstudio.es</div>
-        <div class="entry-sub es">Co-fundador · rushstudio.es</div>
-        <div class="entry-desc en">AI and automation agency for Latin American businesses. Co-founded with Armando (CTO) and Steven Corredor (CMO).</div>
-        <div class="entry-desc es">Agencia de IA y automatización para negocios latinoamericanos. Co-fundada con Armando (CTO) y Steven Corredor (CMO).</div>
+        <div class="operate-title en">Spot the real problem</div>
+        <div class="operate-title es">Identificar el problema real</div>
+        <div class="operate-desc en">Half the work is knowing what actually matters. Most people solve the wrong thing.</div>
+        <div class="operate-desc es">La mitad del trabajo es saber qué importa. La mayoría resuelve lo que no es.</div>
       </div>
-      <div class="entry-year">2025–</div>
     </div>
-
-    <div class="entry entry-clickable" onclick="openPopup('popup-glitched')">
+    <div class="operate-item">
+      <div class="operate-num">02</div>
       <div>
-        <div class="entry-title">Glitched Emails</div>
-        <div class="entry-sub en">Co-founder · Miami</div>
-        <div class="entry-sub es">Co-fundador · Miami</div>
-        <div class="entry-desc en">Email deliverability optimization. 300+ active users, fully automated revenue cycle.</div>
-        <div class="entry-desc es">Optimización de deliverability de email. 300+ usuarios activos, ciclo de ingresos automatizado.</div>
+        <div class="operate-title en">Build fast, learn faster</div>
+        <div class="operate-title es">Construir rápido, aprender más rápido</div>
+        <div class="operate-desc en">I don't wait for perfect. I ship, observe, and adjust. Momentum is everything.</div>
+        <div class="operate-desc es">No espero condiciones perfectas. Lanzo, observo y ajusto. El momentum lo es todo.</div>
       </div>
-      <div class="entry-year">2022–2023</div>
     </div>
-
-    <div class="entry entry-clickable" onclick="openPopup('popup-polar')">
+    <div class="operate-item">
+      <div class="operate-num">03</div>
       <div>
-        <div class="entry-title">Polar Proxies</div>
-        <div class="entry-sub en">Founder & COO · Miami</div>
-        <div class="entry-sub es">Fundador & COO · Miami</div>
-        <div class="entry-desc en">IP proxy services. Six-figure revenue potential in three months. 600+ active members.</div>
-        <div class="entry-desc es">Servicios de proxies IP. Potencial de seis cifras en tres meses. 600+ miembros activos.</div>
+        <div class="operate-title en">Quality is non-negotiable</div>
+        <div class="operate-title es">La calidad no se negocia</div>
+        <div class="operate-desc en">Speed matters, but not at the cost of the work. Every output reflects who you are.</div>
+        <div class="operate-desc es">La velocidad importa, pero no a costa del trabajo. Cada entregable refleja quién eres.</div>
       </div>
-      <div class="entry-year">2021–2022</div>
     </div>
-  </section>
-
-  <section id="experience">
-    <p class="section-label">Experience</p>
-
-    <div class="entry">
+    <div class="operate-item">
+      <div class="operate-num">04</div>
       <div>
-        <div class="entry-title">Rush Studio</div>
-        <div class="entry-sub en">Co-founder · Caracas</div>
-        <div class="entry-sub es">Co-fundador · Caracas</div>
+        <div class="operate-title en">Be honest with yourself</div>
+        <div class="operate-title es">Ser honesto contigo mismo</div>
+        <div class="operate-desc en">Know your limits. Know when to push and when to pivot. Ego is the enemy of progress.</div>
+        <div class="operate-desc es">Conoce tus límites. Sabe cuándo empujar y cuándo pivotar. El ego es el enemigo del progreso.</div>
       </div>
-      <div class="entry-year">2025–</div>
     </div>
-
-    <div class="entry">
+    <div class="operate-item">
+      <div class="operate-num">05</div>
       <div>
-        <div class="entry-title">QuantumReach Growth Agency</div>
-        <div class="entry-sub en">Strategy & Growth Analyst · Madrid</div>
-        <div class="entry-sub es">Analista de Estrategia y Crecimiento · Madrid</div>
+        <div class="operate-title en">Think in decades</div>
+        <div class="operate-title es">Pensar en décadas</div>
+        <div class="operate-desc en">Every decision I make today is part of a 10–15 year plan. Short-term thinking is a trap.</div>
+        <div class="operate-desc es">Cada decisión de hoy es parte de un plan a 10–15 años. El pensamiento a corto plazo es una trampa.</div>
       </div>
-      <div class="entry-year">2024</div>
     </div>
+  </div>
+</div>
 
-    <div class="entry">
-      <div>
-        <div class="entry-title">RG Group</div>
-        <div class="entry-sub en">Strategy · Venezuela</div>
-        <div class="entry-sub es">Estrategia · Venezuela</div>
-      </div>
-      <div class="entry-year">2023</div>
-    </div>
-
-    <div class="entry">
-      <div>
-        <div class="entry-title">Universidad Francisco de Vitoria</div>
-        <div class="entry-sub en">Marketing & Digital Transformation · Madrid</div>
-        <div class="entry-sub es">Marketing y Transformación Digital · Madrid</div>
-        <div class="entry-desc en">Previously completed first year of Business Administration (ADE) at UFV, 2022–2023.</div>
-        <div class="entry-desc es">Anteriormente completé el primer año de ADE en la UFV, 2022–2023.</div>
-      </div>
-      <div class="entry-year">2023–2027</div>
-    </div>
-  </section>
-
-  <footer>
+<!-- FOOTER -->
+<div class="footer-row">
+  <div class="footer-left">
+    <div class="footer-cta en">Building things that matter.<br>If that sounds like you →</div>
+    <div class="footer-cta es">Construyendo cosas que importan.<br>Si eso te suena →</div>
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/amgr1811/" target="_blank">LinkedIn</a>
       <a href="https://rushstudio.es" target="_blank">Rush Studio</a>
-      <a href="/cdn-cgi/l/email-protection#670600565f5656525127000a060e0b4904080a">Email</a>
+      <a href="#" onclick="window.location='mai'+'lto:ag181156'+'@gmail.com'; return false;">Email</a>
     </div>
-    <div class="footer-copy">© 2026</div>
-  </footer>
-
+  </div>
+  <div class="footer-right" style="display:flex; align-items:flex-end;">
+    <div class="footer-copy">© 2026 · Andrés Miguel Gutiérrez Reinoso · Miami · Venezuela · Madrid</div>
+  </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function openPopup(id) {
     document.getElementById(id).classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
   function closePopupBtn(id) {
     document.getElementById(id).classList.remove('open');
     document.body.style.overflow = '';
   }
-
   function closePopup(e, id) {
-    if (e.target === document.getElementById(id)) {
-      closePopupBtn(id);
-    }
+    if (e.target === document.getElementById(id)) closePopupBtn(id);
   }
-
   function toggleLang(btn) {
     const body = document.body;
-    if (body.dataset.lang === 'en') {
-      body.dataset.lang = 'es';
-      btn.textContent = 'EN';
-    } else {
-      body.dataset.lang = 'en';
-      btn.textContent = 'ES';
-    }
+    if (body.dataset.lang === 'en') { body.dataset.lang = 'es'; btn.textContent = 'EN'; }
+    else { body.dataset.lang = 'en'; btn.textContent = 'ES'; }
   }
-
   function toggleTheme(btn) {
-    const body = document.body;
-    if (body.classList.contains('light')) {
-      body.classList.remove('light');
-      btn.textContent = 'Light';
-    } else {
-      body.classList.add('light');
-      btn.textContent = 'Dark';
-    }
+    document.body.classList.toggle('light');
+    btn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
   }
 </script>
 </body>
