@@ -459,6 +459,38 @@
       .footer-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
       .footer-right { padding: 3rem 1.5rem; }
       .charts-grid { grid-template-columns: 1fr; }
+
+      /* Timeline vertical on mobile */
+      .timeline-path { padding: 1.5rem; }
+      .tpath-track { flex-direction: column; gap: 0; }
+      .tpath-track::before { display: none; }
+      .tpath-track::after { display: none; }
+      .tpath-item {
+        flex-direction: row;
+        align-items: flex-start;
+        padding-right: 0;
+        padding-bottom: 1.25rem;
+        gap: 1rem;
+        flex: none;
+        width: 100%;
+      }
+      .tpath-dot {
+        margin-top: 4px;
+        flex-shrink: 0;
+      }
+      .tpath-content { flex: 1; }
+      .tpath-year { margin-bottom: 0.15rem; }
+
+      /* Vertical line on mobile */
+      .tpath-item:not(:last-child)::before {
+        content: '';
+        position: absolute;
+        left: 3px;
+        top: 12px;
+        bottom: 0;
+        width: 1px;
+        background: var(--border);
+      }
     }
   </style>
 </head>
@@ -1265,7 +1297,7 @@
     <div class="tl-item">
       <div class="tl-date en">Skills gained</div>
       <div class="tl-date es">Skills ganados</div>
-      <div class="tl-text en">Building Atom AI — Rush Studio's internal CRM — was a leap into product development. I defined requirements, designed the architecture, integrated Claude API for AI features, and shipped a working platform with 9 database tables, 3 role-differentiated dashboards, and 4 AI functions. This year I understand, for the first time, what it means to think like a product builder — not just a marketer or operator.</div>
+      <div class="tl-text en">Building Atom AI — Rush Studio's internal CRM — was a leap into product development. I defined requirements, designed the architecture, integrated Claude API for AI features, and shipped a working platform with 9 database tables, 3 role-differentiated dashboards, and 4 AI functions. This year pushed my product thinking to a new level — architecture, AI systems, database design. Each year I build, the depth compounds.</div>
       <div class="tl-text es">Construir Atom AI fue un salto al desarrollo de producto. Definí requerimientos, diseñé la arquitectura, integré Claude API y lancé una plataforma funcional con 9 tablas de base de datos, 3 dashboards diferenciados y 4 funciones de IA. Este año entendí por primera vez lo que significa pensar como un constructor de producto.</div>
     </div>
     <div class="tl-item">
