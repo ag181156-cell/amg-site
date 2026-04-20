@@ -240,12 +240,42 @@
     .growth-chart-wrap { position: relative; }
     .chart-main { width: 100%; height: 120px; display: block; }
     .fan-line {
-      transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .fan-delay {
-      transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
     }
     .fan-line.drawn { stroke-dashoffset: 0; }
+
+    /* Continuous subtle shimmer on drawn lines */
+    @keyframes shimmer {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+    @keyframes shimmer2 {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.3; }
+    }
+    @keyframes shimmer3 {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.15; }
+    }
+    @keyframes shimmer4 {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.08; }
+    }
+    .fan-line.drawn:nth-child(1) { animation: shimmer 4s ease-in-out infinite; }
+    .fan-line.drawn:nth-child(2) { animation: shimmer2 4s ease-in-out infinite 0.6s; }
+    .fan-line.drawn:nth-child(3) { animation: shimmer3 4s ease-in-out infinite 1.2s; }
+    .fan-line.drawn:nth-child(4) { animation: shimmer4 4s ease-in-out infinite 1.8s; }
+    .fan-line.drawn:nth-child(5) { animation: shimmer 4s ease-in-out infinite 0.3s; }
+    .fan-line.drawn:nth-child(6) { animation: shimmer2 4s ease-in-out infinite 0.9s; }
+    .fan-line.drawn:nth-child(7) { animation: shimmer3 4s ease-in-out infinite 1.5s; }
+    .fan-line.drawn:nth-child(8) { animation: shimmer4 4s ease-in-out infinite 2.1s; }
     .growth-dots-row {
       display: flex; justify-content: space-between;
       margin-top: 0.5rem;
@@ -282,8 +312,8 @@
       color: var(--text);
     }
     .growth-hint {
-      font-size: 10px; color: var(--dim); margin-top: 0.75rem;
-      letter-spacing: 0.04em; text-align: center;
+      font-size: 11px; color: var(--muted); margin-top: 0.75rem;
+      letter-spacing: 0.04em; text-align: center; font-weight: 600;
     }
     .growth-line-c, .growth-line-d {
       stroke-dasharray: 400; stroke-dashoffset: 400;
@@ -793,15 +823,15 @@
               </linearGradient>
             </defs>
             <!-- Complexity fan lines — curves that arc up then flatten -->
-            <path class="fan-line" d="M 0,110 C 150,105 300,60 600,8" fill="none" stroke="url(#grad-c)" stroke-width="1.8" opacity="1" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line" d="M 0,112 C 150,108 300,68 600,18" fill="none" stroke="url(#grad-c)" stroke-width="1.4" opacity="0.7" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line" d="M 0,113 C 150,110 300,75 600,30" fill="none" stroke="url(#grad-c)" stroke-width="1" opacity="0.45" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line" d="M 0,114 C 150,112 300,82 600,45" fill="none" stroke="url(#grad-c)" stroke-width="0.7" opacity="0.25" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line" d="M 0,110 C 150,105 300,60 600,8" fill="none" stroke="url(#grad-c)" stroke-width="1.8" opacity="1" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line" d="M 0,112 C 150,108 300,68 600,18" fill="none" stroke="url(#grad-c)" stroke-width="1.4" opacity="0.7" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line" d="M 0,113 C 150,110 300,75 600,30" fill="none" stroke="url(#grad-c)" stroke-width="1" opacity="0.45" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line" d="M 0,114 C 150,112 300,82 600,45" fill="none" stroke="url(#grad-c)" stroke-width="0.7" opacity="0.25" stroke-dasharray="1000" stroke-dashoffset="1000"/>
             <!-- Skills fan lines -->
-            <path class="fan-line fan-delay" d="M 0,110 C 150,103 300,55 600,4" fill="none" stroke="url(#grad-d)" stroke-width="1.8" opacity="1" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line fan-delay" d="M 0,112 C 150,106 300,63 600,14" fill="none" stroke="url(#grad-d)" stroke-width="1.4" opacity="0.7" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line fan-delay" d="M 0,113 C 150,109 300,70 600,26" fill="none" stroke="url(#grad-d)" stroke-width="1" opacity="0.45" stroke-dasharray="700" stroke-dashoffset="700"/>
-            <path class="fan-line fan-delay" d="M 0,114 C 150,111 300,78 600,40" fill="none" stroke="url(#grad-d)" stroke-width="0.7" opacity="0.25" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line fan-delay" d="M 0,110 C 150,103 300,55 600,4" fill="none" stroke="url(#grad-d)" stroke-width="1.8" opacity="1" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line fan-delay" d="M 0,112 C 150,106 300,63 600,14" fill="none" stroke="url(#grad-d)" stroke-width="1.4" opacity="0.7" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line fan-delay" d="M 0,113 C 150,109 300,70 600,26" fill="none" stroke="url(#grad-d)" stroke-width="1" opacity="0.45" stroke-dasharray="1000" stroke-dashoffset="1000"/>
+            <path class="fan-line fan-delay" d="M 0,114 C 150,111 300,78 600,40" fill="none" stroke="url(#grad-d)" stroke-width="0.7" opacity="0.25" stroke-dasharray="1000" stroke-dashoffset="1000"/>
           </svg>
           <div class="growth-dots-row">
             <div class="growth-year-btn" onclick="openYearPopup('y2021')">
@@ -855,8 +885,8 @@
       <div class="tpath-content">
         <div class="tpath-year">2022</div>
         <div class="tpath-title">Glitched Emails</div>
-        <div class="tpath-desc en">Second venture. Age 15.</div>
-        <div class="tpath-desc es">Segunda empresa. 15 años.</div>
+        <div class="tpath-desc en">Second venture. Age 17.</div>
+        <div class="tpath-desc es">Segunda empresa. 17 años.</div>
       </div>
     </div>
     <div class="tpath-item">
@@ -955,8 +985,8 @@
       <div class="project-cta es">Ver historia completa →</div>
     </div>
     <div class="project-right">
-      <div class="project-desc en">Email deliverability optimization built for the sneaker reselling market. Engineered a scalable AWS infrastructure farming thousands of email accounts on high-quality IPs — letting clients bypass waitlists within minutes of a drop. 300+ active users, fully automated from onboarding to recurring invoicing. Built at 15 years old.</div>
-      <div class="project-desc es">Optimización de deliverability de email para el mercado de reventa de sneakers. Infraestructura AWS escalable con IPs de alta calidad. 300+ usuarios activos, automatizado de onboarding a facturación. Construido a los 15 años.</div>
+      <div class="project-desc en">Email deliverability optimization built for the sneaker reselling market. Engineered a scalable AWS infrastructure farming thousands of email accounts on high-quality IPs — letting clients bypass waitlists within minutes of a drop. 300+ active users, fully automated from onboarding to recurring invoicing. Built at 17 years old.</div>
+      <div class="project-desc es">Optimización de deliverability de email para el mercado de reventa de sneakers. Infraestructura AWS escalable con IPs de alta calidad. 300+ usuarios activos, automatizado de onboarding a facturación. Construido a los 17 años.</div>
     </div>
   </div>
   <div class="project-item" onclick="openPopup('popup-polar')">
@@ -1183,8 +1213,8 @@
   <div class="popup">
     <button class="popup-x" onclick="closePopupBtn('y2022')">✕</button>
     <div class="popup-title">2022 — Glitched Emails</div>
-    <div class="popup-meta en">Age 15 · Miami · Technical infrastructure</div>
-    <div class="popup-meta es">15 años · Miami · Infraestructura técnica</div>
+    <div class="popup-meta en">Age 17 · Miami · Technical infrastructure</div>
+    <div class="popup-meta es">17 años · Miami · Infraestructura técnica</div>
     <div class="popup-stats">
       <span class="popup-stat">AWS</span>
       <span class="popup-stat">Systems design</span>
@@ -1332,16 +1362,33 @@
             setTimeout(function() { bar.style.width = bar.dataset.width + '%'; }, 400 + i * 150);
           });
           setTimeout(function() {
-            document.querySelectorAll('.fan-line').forEach(function(l) {
-              l.classList.add('drawn');
+            document.querySelectorAll('.fan-line').forEach(function(l, i) {
+              setTimeout(function() {
+                l.classList.add('drawn');
+              }, i * 80);
             });
-          }, 200);
+          }, 150);
         }
       });
     }, { threshold: 0.2 });
     var charts = document.querySelector('.charts-grid');
     if (charts) chartsObserver.observe(charts);
     var timelineTriggered = false;
+    // Dedicated observer for growth chart
+    var growthTriggered = false;
+    var growthObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !growthTriggered) {
+          growthTriggered = true;
+          document.querySelectorAll('.fan-line').forEach(function(l, i) {
+            setTimeout(function() { l.classList.add('drawn'); }, i * 80);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+    var growthSvg = document.getElementById('growth-svg');
+    if (growthSvg) growthObserver.observe(growthSvg);
+
     var timelineObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting && !timelineTriggered) {
