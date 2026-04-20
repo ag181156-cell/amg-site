@@ -10,6 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* === THEME VARIABLES === */
     :root {
       --bg: #0e0e0d;
       --text: #F0EDE6;
@@ -19,14 +20,16 @@
       --serif: 'Hedvig Letters Serif', serif;
       --sans: 'Lexend Deca', sans-serif;
     }
-    body.light {
+    .light {
       --bg: #F9F7F3;
       --text: #1A1A18;
       --muted: #6B6B66;
-      --dim: #C0BEB8;
+      --dim: #B0AFA8;
       --border: #E0DED7;
     }
 
+    /* === BASE === */
+    html { background: var(--bg); }
     body {
       font-family: var(--sans);
       font-weight: 300;
@@ -35,165 +38,351 @@
       background: var(--bg);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.4s, color 0.4s;
     }
-
     a { color: inherit; text-decoration: none; }
 
-    /* NAV */
+    /* === NAV === */
     nav {
       display: flex; justify-content: space-between; align-items: center;
       padding: 2rem 4rem;
       border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; background: var(--bg); z-index: 50;
+      position: sticky; top: 0; z-index: 50;
+      background: var(--bg);
+      transition: background 0.4s, border-color 0.4s;
     }
     .nav-left { display: flex; flex-direction: column; gap: 1px; }
-    .nav-name { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text); }
-    .nav-sub { font-size: 11px; color: var(--dim); }
+    .nav-name { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text); transition: color 0.4s; }
+    .nav-sub { font-size: 11px; color: var(--dim); transition: color 0.4s; }
     .nav-right { display: flex; gap: 0.6rem; }
     .nav-btn {
       font-family: var(--sans); font-size: 11px; background: none;
       border: 1px solid var(--border); color: var(--muted);
-      padding: 4px 12px; border-radius: 2px; cursor: pointer; transition: all 0.2s;
+      padding: 4px 12px; border-radius: 2px; cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.4s;
     }
     .nav-btn:hover { color: var(--text); border-color: var(--muted); }
 
-    /* HERO - full width split */
+    /* === HERO === */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       min-height: 90vh;
       border-bottom: 1px solid var(--border);
+      transition: border-color 0.4s;
     }
     .hero-left {
       padding: 6rem 4rem;
       border-right: 1px solid var(--border);
       display: flex; flex-direction: column; justify-content: space-between;
+      transition: border-color 0.4s;
     }
     .hero-right {
-      padding: 6rem 4rem;
-      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3rem 4rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
     }
     .hero-tag {
       font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--dim); margin-bottom: 2rem;
+      color: var(--dim); margin-bottom: 2rem; transition: color 0.4s;
     }
     .hero-headline {
       font-family: var(--serif);
       font-size: clamp(42px, 5.5vw, 72px);
       font-weight: 400; line-height: 1.1;
       letter-spacing: -0.02em; color: var(--text);
-      margin-bottom: 2rem;
+      margin-bottom: 2rem; transition: color 0.4s;
     }
     .hero-headline em { font-style: italic; }
-    .hero-asterisk { font-size: 12px; color: var(--dim); }
-
-    .hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 3rem; }
+    .hero-asterisk { font-size: 12px; color: var(--dim); transition: color 0.4s; }
+    .hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0; }
     .role-pill {
       font-size: 11px; color: var(--muted);
       border: 1px solid var(--border); padding: 4px 12px; border-radius: 20px;
+      transition: color 0.4s, border-color 0.4s;
     }
-
     .hero-bio p {
       font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 1rem;
+      transition: color 0.4s;
     }
     .hero-bio p:last-child { margin-bottom: 0; }
 
-    /* SECTION ROW - full width with dividing lines */
+    /* === SECTION ROWS === */
     .section-row {
-      display: grid;
-      border-bottom: 1px solid var(--border);
+      display: grid; border-bottom: 1px solid var(--border);
+      transition: border-color 0.4s;
     }
     .section-row.cols-2 { grid-template-columns: 1fr 1fr; }
     .section-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .section-row.cols-4 { grid-template-columns: 320px 1fr; }
-
     .cell {
-      padding: 4rem;
-      border-right: 1px solid var(--border);
+      padding: 4rem; border-right: 1px solid var(--border);
+      transition: border-color 0.4s;
     }
     .cell:last-child { border-right: none; }
-
     .cell-label {
       font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--dim); margin-bottom: 2rem;
+      color: var(--dim); margin-bottom: 2rem; transition: color 0.4s;
     }
     .cell-title {
       font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px);
       font-weight: 400; color: var(--text); line-height: 1.2;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.5rem; transition: color 0.4s;
     }
 
-    /* PROJECTS */
+    /* === PROJECTS === */
     .project-item {
       padding: 2.5rem 4rem;
       border-bottom: 1px solid var(--border);
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; cursor: pointer; transition: background 0.2s;
+      gap: 2rem; cursor: pointer;
+      transition: background 0.2s, border-color 0.4s;
     }
     .project-item:last-child { border-bottom: none; }
-    .project-item:hover { background: rgba(255,255,255,0.02); }
-    body.light .project-item:hover { background: rgba(0,0,0,0.02); }
-
-    .project-left {}
-    .project-num { font-size: 11px; color: var(--dim); margin-bottom: 1rem; letter-spacing: 0.06em; }
+    .project-item:hover { background: rgba(128,128,128,0.05); }
+    .project-num { font-size: 11px; color: var(--dim); margin-bottom: 1rem; letter-spacing: 0.06em; transition: color 0.4s; }
     .project-name {
       font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
-      font-weight: 600; color: var(--text); margin-bottom: 0.5rem;
+      font-weight: 600; color: var(--text); margin-bottom: 0.5rem; transition: color 0.4s;
     }
-    .project-role { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+    .project-role { font-size: 13px; color: var(--muted); margin-bottom: 1rem; transition: color 0.4s; }
     .project-tag {
       display: inline-block; font-size: 10px; letter-spacing: 0.06em;
       text-transform: uppercase; color: var(--bg); background: var(--text);
       padding: 2px 8px; border-radius: 2px; margin-left: 8px;
       vertical-align: middle; position: relative; top: -2px;
+      transition: color 0.4s, background 0.4s;
     }
     .project-cta {
       font-size: 12px; color: var(--dim); margin-top: 1.5rem;
-      display: flex; align-items: center; gap: 0.4rem;
+      display: flex; align-items: center; gap: 0.4rem; transition: color 0.4s;
     }
     .project-item:hover .project-cta { color: var(--text); }
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.75; transition: color 0.4s; }
 
-    .project-right {}
-    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.75; }
-
-    /* EXPERIENCE */
+    /* === EXPERIENCE === */
     .exp-item {
       display: grid; grid-template-columns: 1fr auto;
       padding: 1.5rem 0; border-bottom: 1px solid var(--border);
-      align-items: start;
+      align-items: start; transition: border-color 0.4s;
     }
     .exp-item:last-child { border-bottom: none; }
     .exp-name {
       font-family: var(--serif); font-size: 16px; font-weight: 600;
-      color: var(--text); margin-bottom: 2px;
+      color: var(--text); margin-bottom: 2px; transition: color 0.4s;
     }
-    .exp-role { font-size: 13px; color: var(--muted); }
-    .exp-year { font-size: 12px; color: var(--dim); white-space: nowrap; padding-top: 3px; }
+    .exp-role { font-size: 13px; color: var(--muted); transition: color 0.4s; }
+    .exp-year { font-size: 12px; color: var(--dim); white-space: nowrap; padding-top: 3px; transition: color 0.4s; }
 
-    /* THREE COLUMNS - values skills inspo */
+    /* === VALUES/SKILLS/INSPO COLUMNS === */
     .col-title {
-      font-family: var(--serif); font-size: 13px; font-weight: 600;
-      color: var(--dim); margin-bottom: 1.5rem; letter-spacing: 0.04em;
-      text-transform: uppercase; font-size: 10px;
+      font-family: var(--sans); font-size: 10px; font-weight: 500;
+      color: var(--dim); margin-bottom: 1.5rem; letter-spacing: 0.1em;
+      text-transform: uppercase; transition: color 0.4s;
     }
     .col-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .col-item { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .col-item { font-size: 13px; color: var(--muted); line-height: 1.5; transition: color 0.4s; }
 
-    /* HOW I OPERATE */
+    /* === HOW I OPERATE === */
     .operate-item {
       display: grid; grid-template-columns: 3rem 1fr;
       padding: 1.5rem 0; border-bottom: 1px solid var(--border);
+      transition: border-color 0.4s;
     }
     .operate-item:last-child { border-bottom: none; }
-    .operate-num { font-size: 11px; color: var(--dim); padding-top: 4px; }
+    .operate-num { font-size: 11px; color: var(--dim); padding-top: 4px; transition: color 0.4s; }
     .operate-title {
       font-family: var(--serif); font-size: 16px; font-weight: 600;
-      color: var(--text); margin-bottom: 4px;
+      color: var(--text); margin-bottom: 4px; transition: color 0.4s;
     }
-    .operate-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .operate-desc { font-size: 13px; color: var(--muted); line-height: 1.65; transition: color 0.4s; }
 
-    /* POPUP */
+    /* === CHARTS === */
+    .charts-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem; border-top: 1px solid var(--border);
+      padding-top: 1rem; transition: border-color 0.4s;
+    }
+    .chart-card {
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 0.75rem 1rem; background: rgba(128,128,128,0.04);
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .chart-card-wide { grid-column: 1 / -1; }
+    .chart-card-label {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 0.75rem; transition: color 0.4s;
+    }
+    .chart-stats-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .chart-stat { flex: 1; }
+    .chart-stat-divider { width: 1px; height: 2.5rem; background: var(--border); transition: background 0.4s; }
+    .chart-big-num {
+      font-family: var(--serif); font-size: 26px; font-weight: 400;
+      color: var(--text); line-height: 1; margin-bottom: 2px; transition: color 0.4s;
+    }
+    .chart-stat-label { font-size: 11px; color: var(--dim); transition: color 0.4s; }
+    .chart-sparkline { width: 100%; height: 22px; display: block; }
+    .sparkline-line { stroke: #6EE7B7; }
+    .sparkline-fill { fill: rgba(110,231,183,0.08); }
+    .chart-bars { display: flex; flex-direction: column; gap: 0.6rem; }
+    .chart-bar-item { display: grid; grid-template-columns: 1fr auto; gap: 0.25rem 0.5rem; align-items: center; }
+    .chart-bar-label { font-size: 11px; color: var(--muted); grid-column: 1; transition: color 0.4s; }
+    .chart-bar-track {
+      height: 4px; background: var(--border); border-radius: 2px;
+      overflow: hidden; grid-column: 1; transition: background 0.4s;
+    }
+    .chart-bar-fill { height: 100%; border-radius: 2px; width: 0%; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
+    .chart-bar-pct { font-size: 11px; color: var(--dim); grid-row: 1/3; align-self: center; transition: color 0.4s; }
+    .chart-legend { display: flex; align-items: center; margin-bottom: 0.5rem; }
+    .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .legend-label { font-size: 11px; color: var(--dim); margin-left: 0.3rem; transition: color 0.4s; }
+    .chart-main { width: 100%; height: 48px; display: block; }
+
+    /* GROWTH CHART INTERACTIVE */
+    .growth-chart-wrap { position: relative; }
+    .chart-main { width: 100%; height: 120px; display: block; }
+    .fan-line {
+      transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fan-delay {
+      transition: stroke-dashoffset 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+    }
+    .fan-line.drawn { stroke-dashoffset: 0; }
+    .growth-dots-row {
+      display: flex; justify-content: space-between;
+      margin-top: 0.5rem;
+    }
+    .growth-year-btn {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0.3rem; cursor: pointer; flex: 1;
+      transition: opacity 0.2s;
+    }
+    .growth-year-btn:hover { opacity: 0.7; }
+    .growth-dot-circle {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border); border: 1px solid var(--muted);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .growth-year-btn:hover .growth-dot-circle,
+    .growth-year-btn.active .growth-dot-circle {
+      background: var(--text);
+      transform: scale(1.3);
+    }
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 0 0px rgba(240,237,230,0.3); }
+      50% { box-shadow: 0 0 0 5px rgba(240,237,230,0); }
+    }
+    .growth-year-btn.active .growth-dot-circle {
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    .growth-year-label {
+      font-size: 10px; color: var(--dim);
+      letter-spacing: 0.04em; transition: color 0.2s;
+    }
+    .growth-year-btn:hover .growth-year-label,
+    .growth-year-btn.active .growth-year-label {
+      color: var(--text);
+    }
+    .growth-hint {
+      font-size: 10px; color: var(--dim); margin-top: 0.75rem;
+      letter-spacing: 0.04em; text-align: center;
+    }
+    .growth-line-c, .growth-line-d {
+      stroke-dasharray: 400; stroke-dashoffset: 400;
+      transition: stroke-dashoffset 2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .growth-line-c.animated, .growth-line-d.animated { stroke-dashoffset: 0; }
+
+    /* === TIMELINE PATH — HORIZONTAL === */
+    .timeline-path {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 4rem;
+      overflow: hidden;
+      transition: border-color 0.4s;
+    }
+    .tpath-label {
+      font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dim); margin-bottom: 0.75rem; transition: color 0.4s;
+    }
+    .tpath-track {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    /* base horizontal line */
+    .tpath-track::before {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+      transition: background 0.4s;
+    }
+    /* animated progress line */
+    .tpath-track::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--text);
+      transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
+    }
+    .tpath-track.animated::after {
+      width: 71.4%; /* reaches Rush Studio = 5/7 items */
+    }
+    .tpath-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-right: 1rem;
+      position: relative;
+      flex: 1;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tpath-future {
+      flex: 1;
+    }
+    .tpath-item.visible { opacity: 1; transform: translateY(0); }
+    .tpath-item:last-child { padding-right: 0; }
+
+    .tpath-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border);
+      position: relative; z-index: 1; flex-shrink: 0;
+      margin-bottom: 0.6rem;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    .tpath-dot.active { background: var(--text); }
+    .tpath-dot.future { background: none; border: 1px dashed var(--dim); transition: border-color 0.4s; }
+
+    .tpath-year {
+      font-size: 9px; color: var(--dim);
+      margin-bottom: 0.25rem; white-space: nowrap;
+      letter-spacing: 0.04em; transition: color 0.4s;
+    }
+    .tpath-title {
+      font-family: var(--serif); font-size: 11px; font-weight: 600;
+      color: var(--text); margin-bottom: 2px; line-height: 1.3; transition: color 0.4s;
+    }
+    .tpath-future .tpath-title { color: var(--muted); }
+    .tpath-desc { font-size: 10px; color: var(--dim); line-height: 1.4; transition: color 0.4s; }
+    .tpath-future .tpath-desc { color: var(--muted); font-style: italic; line-height: 1.55; }
+
+    .tpath-content { display: flex; flex-direction: column; }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--text); }
+      50% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 7px var(--muted); }
+    }
+    .tpath-dot.active { animation: pulse 2s ease-in-out infinite; }
+
+    /* === POPUP === */
     .overlay {
       display: none; position: fixed; inset: 0;
       background: rgba(0,0,0,0.7); z-index: 100;
@@ -205,7 +394,7 @@
       border-radius: 6px; max-width: 600px; width: 100%;
       padding: 2.5rem; position: relative; max-height: 85vh; overflow-y: auto;
     }
-    body.light .popup { background: #fff; border-color: #e0ded7; }
+    .light .popup { background: #fff; border-color: #e0ded7; }
     .popup-x {
       position: absolute; top: 1.25rem; right: 1.25rem;
       background: none; border: none; cursor: pointer;
@@ -233,45 +422,43 @@
       color: var(--text); margin-bottom: 0.25rem;
     }
     .tl-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
-    .tl-conclusion {
-      border-top: 1px solid var(--border); padding-top: 1.1rem; margin-top: 1.1rem;
-    }
+    .tl-conclusion { border-top: 1px solid var(--border); padding-top: 1.1rem; margin-top: 1.1rem; }
     .tl-conclusion p { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
-    /* FOOTER */
+    /* === FOOTER === */
     .footer-row {
       display: grid; grid-template-columns: 1fr 1fr;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border); transition: border-color 0.4s;
     }
-    .footer-left {
-      padding: 4rem; border-right: 1px solid var(--border);
-    }
+    .footer-left { padding: 4rem; border-right: 1px solid var(--border); transition: border-color 0.4s; }
     .footer-right { padding: 4rem; }
     .footer-cta {
       font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
       font-weight: 400; color: var(--text); line-height: 1.3;
-      margin-bottom: 2rem;
+      margin-bottom: 2rem; transition: color 0.4s;
     }
     .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: var(--muted); transition: color 0.2s; }
     .footer-links a:hover { color: var(--text); }
-    .footer-copy { font-size: 12px; color: var(--dim); margin-top: 3rem; }
+    .footer-copy { font-size: 12px; color: var(--dim); margin-top: 3rem; transition: color 0.4s; }
 
-    /* LANG */
+    /* === LANG === */
     [data-lang="es"] .en { display: none; }
     [data-lang="en"] .es { display: none; }
 
+    /* === RESPONSIVE === */
     @media (max-width: 768px) {
-      nav { padding: 1.5rem 1.5rem; }
+      nav { padding: 1.5rem; }
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
-      .hero-right { padding: 3rem 1.5rem; }
+      .hero-right { padding: 2rem 1.5rem; }
       .section-row.cols-2, .section-row.cols-3, .section-row.cols-4 { grid-template-columns: 1fr; }
       .cell { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
       .project-item { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
       .footer-row { grid-template-columns: 1fr; }
       .footer-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
       .footer-right { padding: 3rem 1.5rem; }
+      .charts-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -492,9 +679,184 @@
       <p class="en">Hi, I'm Andrés. I grew up on the internet, building things before I knew what entrepreneurship meant. My first company was at 14 — registered, legal, operating. Since then I haven't stopped.</p>
       <p class="en">Right now I'm building Rush Studio — an AI and automation agency helping Latin American businesses work smarter, move faster, and compete at a higher level.</p>
       <p class="en">I'm playing a long game. The goal isn't just to build companies — it's to build the kind of infrastructure and economic activity that creates real opportunities for people in Venezuela and across the region.</p>
-      <p class="es">Hola, soy Andrés. Crecí en internet, construyendo cosas antes de saber lo que era el emprendimiento. Mi primera empresa fue a los 14 años — registrada, legal, operando. Desde entonces no he parado.</p>
+      <p class="es">Hola, soy Andrés. Crecí en internet, construyendo cosas antes de saber lo que era el emprendimiento. Mi primera empresa fue a los 14 — registrada, legal, operando. Desde entonces no he parado.</p>
       <p class="es">Ahora mismo estoy construyendo Rush Studio — una agencia de IA y automatización que ayuda a los negocios latinoamericanos a trabajar más inteligente y competir a un nivel más alto.</p>
       <p class="es">Estoy jugando a largo plazo. El objetivo no es solo construir empresas — es construir infraestructura y actividad económica que crea oportunidades reales para la gente en Venezuela y en toda la región.</p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-card-label en">Built</div>
+        <div class="chart-card-label es">Construido</div>
+        <div class="chart-stats-row">
+          <div class="chart-stat">
+            <div class="chart-big-num" id="num-companies">0</div>
+            <div class="chart-stat-label en">Companies</div>
+            <div class="chart-stat-label es">Empresas</div>
+          </div>
+          <div class="chart-stat-divider"></div>
+          <div class="chart-stat">
+            <div class="chart-big-num" id="num-years">0</div>
+            <div class="chart-stat-label en">Years building</div>
+            <div class="chart-stat-label es">Años construyendo</div>
+          </div>
+        </div>
+        <svg class="chart-sparkline" viewBox="0 0 200 22" preserveAspectRatio="none">
+          <polyline class="sparkline-fill" points="0,22 40,18 80,13 120,8 160,4 200,1 200,22" stroke="none"/>
+          <polyline class="sparkline-line" points="0,20 40,16 80,11 120,6 160,3 200,1" fill="none" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="chart-card">
+        <div class="chart-card-label en">Profile</div>
+        <div class="chart-card-label es">Perfil</div>
+        <div class="chart-bars">
+          <div class="chart-bar-item">
+            <div class="chart-bar-label en">Execution speed</div>
+            <div class="chart-bar-label es">Velocidad de ejecución</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" data-width="88" style="background:#6EE7B7;"></div></div>
+            <div class="chart-bar-pct">88%</div>
+          </div>
+          <div class="chart-bar-item">
+            <div class="chart-bar-label en">Quality focus</div>
+            <div class="chart-bar-label es">Enfoque en calidad</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" data-width="95" style="background:#93C5FD;"></div></div>
+            <div class="chart-bar-pct">95%</div>
+          </div>
+          <div class="chart-bar-item">
+            <div class="chart-bar-label en">Long-term thinking</div>
+            <div class="chart-bar-label es">Visión a largo plazo</div>
+            <div class="chart-bar-track"><div class="chart-bar-fill" data-width="97" style="background:#C4B5FD;"></div></div>
+            <div class="chart-bar-pct">97%</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card chart-card-wide">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div>
+            <div class="chart-card-label en" style="margin-bottom:0;">Growth trajectory · 2021 → 2026</div>
+            <div class="chart-card-label es" style="margin-bottom:0;">Trayectoria · 2021 → 2026</div>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-dot" style="background:#6EE7B7;"></span>
+            <span class="legend-label en">Complexity</span><span class="legend-label es">Complejidad</span>
+            <span class="legend-dot" style="background:#93C5FD; margin-left:0.75rem;"></span>
+            <span class="legend-label en">Skills</span><span class="legend-label es">Habilidades</span>
+          </div>
+        </div>
+        <div class="growth-chart-wrap">
+          <svg id="growth-svg" class="chart-main" viewBox="0 0 600 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="grad-c" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#6EE7B7;stop-opacity:0.3"/>
+                <stop offset="100%" style="stop-color:#6EE7B7;stop-opacity:1"/>
+              </linearGradient>
+              <linearGradient id="grad-d" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#93C5FD;stop-opacity:0.3"/>
+                <stop offset="100%" style="stop-color:#C4B5FD;stop-opacity:1"/>
+              </linearGradient>
+            </defs>
+            <!-- Complexity fan lines — curves that arc up then flatten -->
+            <path class="fan-line" d="M 0,110 C 150,105 300,60 600,8" fill="none" stroke="url(#grad-c)" stroke-width="1.8" opacity="1" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line" d="M 0,112 C 150,108 300,68 600,18" fill="none" stroke="url(#grad-c)" stroke-width="1.4" opacity="0.7" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line" d="M 0,113 C 150,110 300,75 600,30" fill="none" stroke="url(#grad-c)" stroke-width="1" opacity="0.45" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line" d="M 0,114 C 150,112 300,82 600,45" fill="none" stroke="url(#grad-c)" stroke-width="0.7" opacity="0.25" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <!-- Skills fan lines -->
+            <path class="fan-line fan-delay" d="M 0,110 C 150,103 300,55 600,4" fill="none" stroke="url(#grad-d)" stroke-width="1.8" opacity="1" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line fan-delay" d="M 0,112 C 150,106 300,63 600,14" fill="none" stroke="url(#grad-d)" stroke-width="1.4" opacity="0.7" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line fan-delay" d="M 0,113 C 150,109 300,70 600,26" fill="none" stroke="url(#grad-d)" stroke-width="1" opacity="0.45" stroke-dasharray="700" stroke-dashoffset="700"/>
+            <path class="fan-line fan-delay" d="M 0,114 C 150,111 300,78 600,40" fill="none" stroke="url(#grad-d)" stroke-width="0.7" opacity="0.25" stroke-dasharray="700" stroke-dashoffset="700"/>
+          </svg>
+          <div class="growth-dots-row">
+            <div class="growth-year-btn" onclick="openYearPopup('y2021')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2021</div>
+            </div>
+            <div class="growth-year-btn" onclick="openYearPopup('y2022')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2022</div>
+            </div>
+            <div class="growth-year-btn" onclick="openYearPopup('y2023')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2023</div>
+            </div>
+            <div class="growth-year-btn" onclick="openYearPopup('y2024')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2024</div>
+            </div>
+            <div class="growth-year-btn" onclick="openYearPopup('y2025')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2025</div>
+            </div>
+            <div class="growth-year-btn active" onclick="openYearPopup('y2026')">
+              <div class="growth-dot-circle"></div>
+              <div class="growth-year-label">2026</div>
+            </div>
+          </div>
+          <p class="growth-hint en">Click any year to see what I learned</p>
+          <p class="growth-hint es">Haz click en cualquier año para ver lo que aprendí</p>
+        </div>      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE — FULL WIDTH -->
+<div class="timeline-path">
+  <div class="tpath-label en">The path so far</div>
+  <div class="tpath-label es">El camino hasta aquí</div>
+  <div class="tpath-track">
+    <div class="tpath-item">
+      <div class="tpath-dot"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">2021</div>
+        <div class="tpath-title">Polar Proxies</div>
+        <div class="tpath-desc en">First company. Age 14.</div>
+        <div class="tpath-desc es">Primera empresa. 14 años.</div>
+      </div>
+    </div>
+    <div class="tpath-item">
+      <div class="tpath-dot"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">2022</div>
+        <div class="tpath-title">Glitched Emails</div>
+        <div class="tpath-desc en">Second venture. Age 15.</div>
+        <div class="tpath-desc es">Segunda empresa. 15 años.</div>
+      </div>
+    </div>
+    <div class="tpath-item">
+      <div class="tpath-dot"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">2023</div>
+        <div class="tpath-title">Madrid · UFV</div>
+        <div class="tpath-desc en">New city. University.</div>
+        <div class="tpath-desc es">Nueva ciudad. Universidad.</div>
+      </div>
+    </div>
+    <div class="tpath-item">
+      <div class="tpath-dot"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">2024</div>
+        <div class="tpath-title">QuantumReach</div>
+        <div class="tpath-desc en">Strategy & Growth.</div>
+        <div class="tpath-desc es">Estrategia y crecimiento.</div>
+      </div>
+    </div>
+    <div class="tpath-item">
+      <div class="tpath-dot active"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">2025</div>
+        <div class="tpath-title">Rush Studio</div>
+        <div class="tpath-desc en">AI agency. Latin America.</div>
+        <div class="tpath-desc es">Agencia de IA. Latam.</div>
+      </div>
+    </div>
+    <div class="tpath-item tpath-future">
+      <div class="tpath-dot future"></div>
+      <div class="tpath-content">
+        <div class="tpath-year">→</div>
+        <div class="tpath-title en">Learning first. Always.</div>
+        <div class="tpath-title es">Aprender primero. Siempre.</div>
+        <div class="tpath-desc en">15-year plan. Earning it every day.</div>
+        <div class="tpath-desc es">Plan a 15 años. Ganándomelo cada día.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -505,13 +867,13 @@
     <div>
       <div class="cell-label en">Featured projects</div>
       <div class="cell-label es">Proyectos</div>
-      <div class="cell-title en">What I've built</div>
-      <div class="cell-title es">Lo que he construido</div>
+      <div class="cell-title en">What I've<br>built</div>
+      <div class="cell-title es">Lo que he<br>construido</div>
     </div>
   </div>
   <div class="cell" style="display:flex; align-items:flex-end;">
     <p style="font-size:14px; color:var(--muted); line-height:1.75;" class="en">Click any project to see the full story — the timeline, the decisions, and what I learned.</p>
-    <p style="font-size:14px; color:var(--muted); line-height:1.75;" class="es">Haz click en cualquier proyecto para ver la historia completa — el timeline, las decisiones, y lo que aprendí.</p>
+    <p style="font-size:14px; color:var(--muted); line-height:1.75;" class="es">Haz click en cualquier proyecto para ver la historia completa.</p>
   </div>
 </div>
 
@@ -527,8 +889,8 @@
       <div class="project-cta es">Ver historia completa →</div>
     </div>
     <div class="project-right">
-      <div class="project-desc en">AI and automation agency for Latin American businesses. Co-founded with Armando (CTO) and Steven Corredor (CMO). We build web platforms, intelligent dashboards, process automation systems, and AI chatbots — helping businesses that never had access to the right tools finally compete at a higher level. Quality is the non-negotiable at every stage of every project.</div>
-      <div class="project-desc es">Agencia de IA y automatización para negocios latinoamericanos. Co-fundada con Armando (CTO) y Steven Corredor (CMO). Construimos plataformas web, dashboards inteligentes, sistemas de automatización y chatbots — ayudando a negocios que nunca tuvieron acceso a las herramientas correctas a competir a un nivel más alto. La calidad es innegociable en cada etapa de cada proyecto.</div>
+      <div class="project-desc en">AI and automation agency for Latin American businesses. Co-founded with Armando (CTO) and Steven Corredor (CMO). Web development, dashboards, process automation, and AI chatbots — helping businesses that never had access to the right tools finally compete at a higher level.</div>
+      <div class="project-desc es">Agencia de IA y automatización para negocios latinoamericanos. Co-fundada con Armando (CTO) y Steven Corredor (CMO). Desarrollo web, dashboards, automatización y chatbots — ayudando a negocios que nunca tuvieron acceso a las herramientas correctas a competir a un nivel más alto.</div>
     </div>
   </div>
   <div class="project-item" onclick="openPopup('popup-atom')">
@@ -542,7 +904,7 @@
     </div>
     <div class="project-right">
       <div class="project-desc en">Internal CRM platform built for Rush Studio's commercial team — AI-powered, role-differentiated, designed from scratch for Venezuelan sales teams. Integrates Claude API for personalized pitch generation, prospect analysis, and team performance insights. Anti-collision CRM, 3 role dashboards, research center, real-time KPIs, and commission tracking. Built on React + TypeScript + Supabase.</div>
-      <div class="project-desc es">Plataforma CRM interna construida para el equipo comercial de Rush Studio — con IA integrada y dashboards diferenciados por rol, diseñada desde cero para equipos de ventas venezolanos. Integra Claude API para generación de pitches, análisis de prospectos e insights del equipo. CRM anti-colisión, 3 dashboards por rol, centro de investigación, KPIs en tiempo real y seguimiento de comisiones. En React + TypeScript + Supabase.</div>
+      <div class="project-desc es">Plataforma CRM interna construida para el equipo comercial de Rush Studio — con IA integrada y dashboards diferenciados por rol, diseñada desde cero para equipos de ventas venezolanos. Integra Claude API para generación de pitches, análisis de prospectos e insights del equipo.</div>
     </div>
   </div>
   <div class="project-item" onclick="openPopup('popup-glitched')">
@@ -555,8 +917,8 @@
       <div class="project-cta es">Ver historia completa →</div>
     </div>
     <div class="project-right">
-      <div class="project-desc en">Email deliverability optimization built for the sneaker reselling market. I engineered a scalable AWS infrastructure that farmed thousands of email accounts on high-quality IPs, raising sender reputation scores automatically — letting clients bypass waitlists within minutes of a drop. 300+ active users, fully automated from onboarding to recurring invoicing. Built at 15 years old.</div>
-      <div class="project-desc es">Optimización de deliverability de email para el mercado de reventa de sneakers. Construí una infraestructura AWS escalable que generaba miles de cuentas con IPs de alta calidad, subiendo el score de reputación automáticamente — permitiendo a los clientes pasar las listas de espera en minutos. 300+ usuarios activos, automatizado de onboarding a facturación. Construido a los 15 años.</div>
+      <div class="project-desc en">Email deliverability optimization built for the sneaker reselling market. Engineered a scalable AWS infrastructure farming thousands of email accounts on high-quality IPs — letting clients bypass waitlists within minutes of a drop. 300+ active users, fully automated from onboarding to recurring invoicing. Built at 15 years old.</div>
+      <div class="project-desc es">Optimización de deliverability de email para el mercado de reventa de sneakers. Infraestructura AWS escalable con IPs de alta calidad. 300+ usuarios activos, automatizado de onboarding a facturación. Construido a los 15 años.</div>
     </div>
   </div>
   <div class="project-item" onclick="openPopup('popup-polar')">
@@ -569,8 +931,8 @@
       <div class="project-cta es">Ver historia completa →</div>
     </div>
     <div class="project-right">
-      <div class="project-desc en">IP proxy infrastructure for the sneaker reselling market, giving buyers the residential IPs needed to run bots at scale and cop limited releases. Built a Discord community of 600–800 active members from zero — through marketing and genuine connections inside the reselling world. My first legally registered company. Built the full P&L, pricing strategy, and a 24/7 automated payment system. All at 14 years old.</div>
-      <div class="project-desc es">Infraestructura de proxies IP para el mercado de reventa de sneakers, dando a los compradores los IPs residenciales necesarios para correr bots a escala. Construí una comunidad en Discord de 600–800 miembros activos desde cero. Mi primera empresa legalmente registrada. Gestioné el P&L completo, estrategia de precios y un sistema de pagos automatizado 24/7. Todo a los 14 años.</div>
+      <div class="project-desc en">IP proxy infrastructure for the sneaker reselling market. Built a Discord community of 600–800 active members from zero. My first legally registered company. Managed P&L, pricing strategy, and a 24/7 automated payment system. All at 14 years old.</div>
+      <div class="project-desc es">Infraestructura de proxies IP para el mercado de reventa de sneakers. Comunidad Discord de 600–800 miembros activos desde cero. Mi primera empresa registrada. Gestioné P&L y sistema de pagos automatizado 24/7. Todo a los 14 años.</div>
     </div>
   </div>
 </div>
@@ -606,7 +968,7 @@
     </div>
   </div>
   <div class="cell">
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5rem;">
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); gap:1.5rem; height:100%;">
       <div>
         <div class="col-title en">Values</div>
         <div class="col-title es">Valores</div>
@@ -683,8 +1045,8 @@
     <div>
       <div class="cell-label en">Principles</div>
       <div class="cell-label es">Principios</div>
-      <div class="cell-title en">How I operate</div>
-      <div class="cell-title es">Cómo trabajo</div>
+      <div class="cell-title en">How I<br>operate</div>
+      <div class="cell-title es">Cómo<br>trabajo</div>
     </div>
   </div>
   <div class="cell">
@@ -752,26 +1114,229 @@
   </div>
 </div>
 
+<!-- YEAR POPUPS -->
+<div class="overlay" id="y2021" onclick="closePopup(event,'y2021')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2021')">✕</button>
+    <div class="popup-title">2021 — Polar Proxies</div>
+    <div class="popup-meta en">Age 14 · Miami · First company</div>
+    <div class="popup-meta es">14 años · Miami · Primera empresa</div>
+    <div class="popup-stats">
+      <span class="popup-stat">Entrepreneurship</span>
+      <span class="popup-stat">Operations</span>
+      <span class="popup-stat">Community building</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">Running a real business at 14 taught me things no classroom could. I learned how to register a company, manage P&L, price a product, build a community from zero, and automate payments — all while still in school. The most important skill: responsibility. Real clients, real money, real consequences.</div>
+      <div class="tl-text es">Administrar una empresa real a los 14 años me enseñó cosas que ningún aula podría. Aprendí a registrar una empresa, gestionar P&L, fijar precios, construir una comunidad desde cero y automatizar pagos — todo mientras seguía en la escuela.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">Business registration · P&L management · Pricing strategy · Community building (Discord) · Payment automation · Customer service · Resilience under pressure</div>
+      <div class="tl-text es">Registro empresarial · Gestión de P&L · Estrategia de precios · Construcción de comunidades · Automatización de pagos · Atención al cliente · Resiliencia</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="y2022" onclick="closePopup(event,'y2022')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2022')">✕</button>
+    <div class="popup-title">2022 — Glitched Emails</div>
+    <div class="popup-meta en">Age 15 · Miami · Technical infrastructure</div>
+    <div class="popup-meta es">15 años · Miami · Infraestructura técnica</div>
+    <div class="popup-stats">
+      <span class="popup-stat">AWS</span>
+      <span class="popup-stat">Systems design</span>
+      <span class="popup-stat">Automation</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">This year I went deep into technical infrastructure. Building on AWS, engineering deliverability systems, and automating the full revenue cycle from onboarding to billing — without touching it manually. I also learned market timing: when a market dies, don't hold on. Find the next problem.</div>
+      <div class="tl-text es">Este año profundicé en infraestructura técnica. Construí en AWS, diseñé sistemas de deliverability y automaticé el ciclo de ingresos completo. También aprendí timing de mercado: cuando un mercado muere, no te aferres. Busca el próximo problema.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">AWS infrastructure · Email deliverability · Systems design · Full automation pipelines · SaaS product thinking · Market timing · Scaling without hiring</div>
+      <div class="tl-text es">Infraestructura AWS · Deliverability de email · Diseño de sistemas · Pipelines de automatización · Pensamiento de producto SaaS · Timing de mercado · Escalar sin contratar</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="y2023" onclick="closePopup(event,'y2023')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2023')">✕</button>
+    <div class="popup-title">2023 — Madrid · RG Group · UFV</div>
+    <div class="popup-meta en">Age 16 · Madrid · Strategy + University begins</div>
+    <div class="popup-meta es">16 años · Madrid · Estrategia + Inicio universitario</div>
+    <div class="popup-stats">
+      <span class="popup-stat">Strategy</span>
+      <span class="popup-stat">Marketing</span>
+      <span class="popup-stat">Business fundamentals</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">Moving to Madrid was a reset. I started at UFV studying Marketing & Digital Transformation — the formal side of what I'd been doing intuitively. At RG Group I worked on strategy inside a real conglomerate, learning how large organizations think, plan, and execute. The contrast with my own ventures was invaluable.</div>
+      <div class="tl-text es">Mudarse a Madrid fue un reset. Empecé en UFV estudiando Marketing y Transformación Digital — el lado formal de lo que había estado haciendo intuitivamente. En RG Group trabajé en estrategia dentro de un conglomerado real, aprendiendo cómo piensan, planifican y ejecutan las grandes organizaciones.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">Corporate strategy · Organizational thinking · Marketing theory · Digital transformation · Stakeholder management · Adaptability (new country, new environment)</div>
+      <div class="tl-text es">Estrategia corporativa · Pensamiento organizacional · Teoría de marketing · Transformación digital · Gestión de stakeholders · Adaptabilidad (nuevo país, nuevo entorno)</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="y2024" onclick="closePopup(event,'y2024')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2024')">✕</button>
+    <div class="popup-title">2024 — QuantumReach</div>
+    <div class="popup-meta en">Age 17 · Madrid · Growth agency + Year 2 UFV</div>
+    <div class="popup-meta es">17 años · Madrid · Agencia de crecimiento + 2º año UFV</div>
+    <div class="popup-stats">
+      <span class="popup-stat">Growth strategy</span>
+      <span class="popup-stat">Analytics</span>
+      <span class="popup-stat">Client work</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">Working at QuantumReach as a Strategy & Growth Analyst put me inside real client projects — analyzing markets, building growth strategies, and delivering under deadlines. At UFV I went deeper into consumer behavior, brand strategy, and digital marketing. The combination of theory and live client work accelerated my learning dramatically.</div>
+      <div class="tl-text es">Trabajar en QuantumReach me puso dentro de proyectos reales — analizando mercados, construyendo estrategias de crecimiento y entregando bajo plazos. En UFV profundicé en comportamiento del consumidor, estrategia de marca y marketing digital.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">Growth strategy · Market analysis · Go-to-market planning · Client communication · Data-driven decision making · Brand strategy · Performance marketing</div>
+      <div class="tl-text es">Estrategia de crecimiento · Análisis de mercado · Planificación go-to-market · Comunicación con clientes · Toma de decisiones basada en datos · Estrategia de marca · Marketing de performance</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="y2025" onclick="closePopup(event,'y2025')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2025')">✕</button>
+    <div class="popup-title">2025 — Rush Studio</div>
+    <div class="popup-meta en">Age 18 · Madrid + Caracas · Co-founding + Year 3 UFV</div>
+    <div class="popup-meta es">18 años · Madrid + Caracas · Co-fundación + 3º año UFV</div>
+    <div class="popup-stats">
+      <span class="popup-stat">Agency building</span>
+      <span class="popup-stat">AI & Automation</span>
+      <span class="popup-stat">Leadership</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">Co-founding Rush Studio with Armando and Steven was my first real experience leading across multiple disciplines simultaneously — brand, product, sales, operations. I learned how to build an agency from scratch, position in a competitive market, manage client relationships, and maintain quality standards under pressure. At UFV, year 3 brought sales techniques, quality management, and digital transformation strategy.</div>
+      <div class="tl-text es">Co-fundar Rush Studio fue mi primera experiencia liderando múltiples disciplinas simultáneamente — marca, producto, ventas, operaciones. Aprendí a construir una agencia desde cero, posicionarla en un mercado competitivo y mantener estándares de calidad bajo presión.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">Agency operations · AI tools & automation · Brand building · Sales · Team leadership · Client delivery · Positioning · Quality management · Sales techniques (UFV)</div>
+      <div class="tl-text es">Operaciones de agencia · Herramientas de IA y automatización · Construcción de marca · Ventas · Liderazgo de equipo · Entrega a clientes · Posicionamiento · Gestión de calidad</div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="y2026" onclick="closePopup(event,'y2026')">
+  <div class="popup">
+    <button class="popup-x" onclick="closePopupBtn('y2026')">✕</button>
+    <div class="popup-title">2026 — Atom AI</div>
+    <div class="popup-meta en">Age 19 · Madrid + Maracaibo · Product + Year 4 UFV</div>
+    <div class="popup-meta es">19 años · Madrid + Maracaibo · Producto + 4º año UFV</div>
+    <div class="popup-stats">
+      <span class="popup-stat">Product development</span>
+      <span class="popup-stat">Claude API</span>
+      <span class="popup-stat">Full-stack thinking</span>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Skills gained</div>
+      <div class="tl-date es">Skills ganados</div>
+      <div class="tl-text en">Building Atom AI — Rush Studio's internal CRM — was a leap into product development. I defined requirements, designed the architecture, integrated Claude API for AI features, and shipped a working platform with 9 database tables, 3 role-differentiated dashboards, and 4 AI functions. This year I understand, for the first time, what it means to think like a product builder — not just a marketer or operator.</div>
+      <div class="tl-text es">Construir Atom AI fue un salto al desarrollo de producto. Definí requerimientos, diseñé la arquitectura, integré Claude API y lancé una plataforma funcional con 9 tablas de base de datos, 3 dashboards diferenciados y 4 funciones de IA. Este año entendí por primera vez lo que significa pensar como un constructor de producto.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date en">Key skills</div>
+      <div class="tl-date es">Habilidades clave</div>
+      <div class="tl-text en">Product thinking · Requirements definition · AI integration (Claude API) · Database design · UX logic · Supabase · React + TypeScript · Systems architecture · Shipping under constraints</div>
+      <div class="tl-text es">Pensamiento de producto · Definición de requerimientos · Integración de IA (Claude API) · Diseño de base de datos · Lógica UX · Supabase · React + TypeScript · Arquitectura de sistemas · Lanzar bajo restricciones</div>
+    </div>
+  </div>
+</div>
+
 <script>
-  function openPopup(id) {
-    document.getElementById(id).classList.add('open');
-    document.body.style.overflow = 'hidden';
+  document.addEventListener('DOMContentLoaded', function() {
+    function countUp(el, target, duration) {
+      var start = 0, step = target / (duration / 16);
+      var timer = setInterval(function() {
+        start += step;
+        if (start >= target) { start = target; clearInterval(timer); }
+        el.textContent = Math.floor(start);
+      }, 16);
+    }
+    var chartsTriggered = false;
+    var chartsObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !chartsTriggered) {
+          chartsTriggered = true;
+          var c = document.getElementById('num-companies');
+          var y = document.getElementById('num-years');
+          if (c) countUp(c, 4, 1400);
+          if (y) setTimeout(function(){ countUp(y, 5, 1400); }, 200);
+          document.querySelectorAll('.chart-bar-fill').forEach(function(bar, i) {
+            setTimeout(function() { bar.style.width = bar.dataset.width + '%'; }, 400 + i * 150);
+          });
+          setTimeout(function() {
+            document.querySelectorAll('.fan-line').forEach(function(l) {
+              l.classList.add('drawn');
+            });
+          }, 200);
+        }
+      });
+    }, { threshold: 0.2 });
+    var charts = document.querySelector('.charts-grid');
+    if (charts) chartsObserver.observe(charts);
+    var timelineTriggered = false;
+    var timelineObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !timelineTriggered) {
+          timelineTriggered = true;
+          var track = document.querySelector('.tpath-track');
+          // Animate items with stagger
+          document.querySelectorAll('.tpath-item').forEach(function(item, i) {
+            setTimeout(function() { item.classList.add('visible'); }, i * 100);
+          });
+          // Draw the progress line after a short delay
+          setTimeout(function() {
+            if (track) track.classList.add('animated');
+          }, 200);
+        }
+      });
+    }, { threshold: 0.1 });
+    var timeline = document.querySelector('.tpath-track');
+    if (timeline) timelineObserver.observe(timeline);
+  });
+
+  function openYearPopup(id){ openPopup(id); }
+  function openPopup(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closePopupBtn(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+  function closePopup(e,id){if(e.target===document.getElementById(id))closePopupBtn(id);}
+  function toggleLang(btn){
+    var b=document.body;
+    if(b.dataset.lang==='en'){b.dataset.lang='es';btn.textContent='EN';}
+    else{b.dataset.lang='en';btn.textContent='ES';}
   }
-  function closePopupBtn(id) {
-    document.getElementById(id).classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closePopup(e, id) {
-    if (e.target === document.getElementById(id)) closePopupBtn(id);
-  }
-  function toggleLang(btn) {
-    const body = document.body;
-    if (body.dataset.lang === 'en') { body.dataset.lang = 'es'; btn.textContent = 'EN'; }
-    else { body.dataset.lang = 'en'; btn.textContent = 'ES'; }
-  }
-  function toggleTheme(btn) {
-    document.body.classList.toggle('light');
-    btn.textContent = document.body.classList.contains('light') ? 'Dark' : 'Light';
+  function toggleTheme(btn){
+    var h=document.documentElement;
+    if(h.classList.contains('light')){h.classList.remove('light');btn.textContent='Light';}
+    else{h.classList.add('light');btn.textContent='Dark';}
   }
 </script>
 </body>
